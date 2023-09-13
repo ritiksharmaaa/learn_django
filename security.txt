@@ -1,0 +1,22 @@
+# django Security : -
+
+creoss site Scription Xss protection 
+cross Site Request Forgery CSRF protectoin 
+Sql injection protection 
+clickjacking Protection 
+ssl/HTTPS 
+Host Header Validation 
+Referrer Policy 
+Session Security 
+User_uplord Content .
+
+Make sure that your python code is outside of the Web server route this will ensure that your python code is not accidentally served as a plain textor accidentally executed.
+
+Take care with any user uploaded file.
+
+Jango does not total request to authenticate user to protect against brute force attack against the authentication system you may consider deploying a Django plug in or web server module to throttle these requests.
+
+keep your SECERT_kEY a secret 
+
+it is good idea to limit the accessibility of your caching system and database using of firewall.
+

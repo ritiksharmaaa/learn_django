@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+  </head>
+  <body>
+          
+    <style>
+      body{
+        background-color : light  ;
+      }
+      .d {
+        margin-bottom: 6px;
+        color: black;
+        width: 80%;
+        margin-left: 34px;
+        padding: 23px;
+      }
+      .t{
+color : red ;
+      }
+    </style>
+    <h1 class="d">Best Blog page </h1>
+
+    {% for page_obj  in page_obj %}
+    <div class="d">
+      <a href="{{page_obj.id}}/">
+      <h1 class="g">{{page_obj.blog_title}}</h1>
+      <h2 class="e">{{page_obj.publish_date}}</h2>
+      <h3 class="b">{{page_obj.blog_desc | truncatewords:23}}</h3>
+    </a>
+      <hr />
+    </div>
+
+    {% endfor %}
+  
+
+      
+  
+        
+     
+        
+    {% if page_obj.has_previous  %}
+    <a href="?page={{page_obj.previous_page_number}}"> previous </a>
+    
+    {% endif %}
+    <h1>{{page_obj.number}} of {{page_obj.paginator.num_pages}}</h1>
+    
+    {% if page_obj.has_next %}
+    <a href="?page={{page_obj.next_page_number}}"> Next</a>
+      
+    {% endif %}
+
+
+      
+      
+  </body>
+</html>

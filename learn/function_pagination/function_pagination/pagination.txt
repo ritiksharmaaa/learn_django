@@ -1,0 +1,76 @@
+# pagination in function view : - 
+
+
+Using pagination we can split data to several pages with previous slash next link.
+
+Jenga provide a few classes that help you manage paginated data : - 
+
+paginator class
+
+pageClass 
+
+paginator class --------------------
+
+
+class paginator(object_list , per_page, orphans=() , allow_empty_first_page=True)
+
+where , 
+
+object_list :  - its take Tuple List Querieset or other slicable object with a count() or __length__() Method it's required it is required . 
+
+per_page - the maximum number of items to include on a page not include orphans it is required.
+
+orphans - Use this when you don't want to have a last page with few items if the last page would normally have a number of items less than or equal to orphans then those items will be added to the previous page which becomes the last page instead of leaving the item on a page by themselves or for default to zero which means page R never combined and the last page may have one itemIs optional.
+
+allow_empty_first_page : - Whether or not the first page is allowed to be empty if false and object under school list is empty then the empty page error will be raised it is optional.
+
+
+attributes: 
+
+count - the total number of objects across all page.
+
+num_page : The total number of pages.
+
+page_range : - a one - based range iterator of page number eg .  yielding[1 , 2, 3, 4,]
+
+methods = 
+
+
+get_page(number) - These methods return a page object with a given 1 based index also handling out of range and invalid page number.
+
+if the page is not number it returns the first page if the page number is negative or greater than the number of pages it returns the last page raise an empty page exception only if you specify page in later allow _empty _first _page is falseand object under school list is empty.
+
+
+page(number) : - These method return a page object with a given one based index raise invalid page if the given page number does not exist.
+
+
+
+
+------------------pageClass
+
+class Page(object_list , number paginator)
+
+a page acts Like a sequence of Page.object _list which using len() or iterating it directly . 
+
+object_list 
+
+number
+
+has_next() - it returns True if there' s a next page.
+
+has_previous() - it returned true if they're a previous Page
+
+has_other_pages() - it returned true if they're next or previous page.
+
+next_page_number() - It returned the next page number raised invalid page if next page does not exist.
+
+previous_page_number() - Hit return the previous page number raised invalid page if previous page does not exist . 
+
+start_index() - He returned the one based index or the first object on the page eleven to all of the objects in the page initers list for example when paginator a list of five objects with two objects per page the second page is start _index() Wood return 3.
+
+
+
+using pagination in function based view or class based view ---------------------------------
+
+
+

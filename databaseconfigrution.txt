@@ -1,0 +1,26 @@
+# database configration : 
+
+in setting.py file 
+
+DAtabase = {
+    default: 'django.db.backends.sqlite3'
+    'Nmae' : os.path.join(BASE_DIR , 'db.sqlite3')
+    }
+
+    configration for mySql : 
+
+    install mysql in your system 
+
+    You have to create your own database user to configure my sql with Django. 
+
+
+DAtabase = {
+    default: 'django.db.backends.mysql'
+    'Name' :'databse name '
+    'USER' : 'User_name'
+    'PASSWORD': 'password'
+    'HOST' : 'localhost',  # host an port are optionals 
+    'POST': 'port_number'
+    }
+
+    same for oracle or postgrease . 

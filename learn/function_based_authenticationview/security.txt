@@ -1,0 +1,55 @@
+auth setting -----
+
+setting for django.contrib.auth 
+
+AUTHENTICATION_BACKENDS 
+
+Second class as a string to use when attempting to authenticate a user default django.contract.orth.backends.model backends
+
+
+AUTH_USER_MODEL 
+
+the model to use to represent a User. 
+
+default : auth.User 
+
+LOGIN_REDIRECT_URL 
+
+The url or named url pattern the request or redirect after logging when the login view does not get our next get parameter.
+
+default : '/accounts/profile/'
+
+LOGIN_URL 
+
+The URL or named url pattern where requests are redirect for nodding when using the login _required() Decorator lodging required mixing or excess mixture.
+
+default 'accounts/login/'
+
+LOGOUT_REDIRECT_URL 
+
+The URL or named URL pattern when requests are redirect after logout if logout view does not have a next _page attribute.
+
+If none did arrive will be performed in the lower view will be rendered default equal to 9 passwordnone 
+
+
+PASSWORD_RESET_TIMEOUT_DAYS 
+
+The minimum number of days password reset link is valid for depending on when the link is generated it will be valid for up to day LOnger 
+
+Used by the PasswordResetConfirmatioView
+
+default : 3 
+
+PASSWORD_HASHERS 
+DEFAULT : Django dot country dot oath hazard dot P B K D F two password hasser/
+django dot contriv dot art dot hazard dot P B K D F O S H a I P password hasher.
+jengodorcon trip dot org dot hazard dot ergon two password hasher.
+
+AUTH_PASSWORD_VALIDATORS 
+
+the list of validator that are used to check the strength of user password.
+
+default : empty [] ()
+
+
+
