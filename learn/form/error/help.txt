@@ -1,0 +1,30 @@
+# styling form error 
+
+if you want to styling a forms error . you have to render from field onr oby one not direct {{form.as_P}},
+we ahve to render each form field input one by one and handel from field .
+
+writ this in html . if do spefic form field rendering 
+
+{{form.non_field_errors}}
+
+if you dont want error came in ul tage so use a filtwr called striptags 
+but when it happen it dont came under any tag . so how you styile it simple give thus error in an span tags and guve a class
+
+
+diffrent erro message in one field how you styile it 
+suppose for ivalid red color , for require - green color , for min_length , yellow color .
+
+
+its simple we agin getting all the error for form.errors using loop . and then render into a span where you class writen in those span .
+
+
+
+
+do this problem in new html  with same forms bit diffrent views . . 
+
+
+Styling Django firm errors-------------------------
+this error whe you use {{form}} than yiu have acces to save a class name in tr set .
+
+
+error _css and require _css _class form class hooks can be used to add class attributes to require row or rows with errors  rows will given " errors" and /  or "require"  classes as needed 

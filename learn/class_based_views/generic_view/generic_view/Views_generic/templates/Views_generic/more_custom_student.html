@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4> more custom templates data </h4>
+    {% for stu in students %}
+    <h1> {{stu.name }} , {{ stu.roll }} , {{ stu.course }}</h1>
+        
+    {% endfor %}
+
+    <hr>
+
+    <h1> getting data with custom with extra context , rether than  object_list using making function inside list view using get context data method with super call  </h1>
+
+    
+    {% for s  in fresher  %}
+       <h1> {{s.name}} - {{s.course}}</h1>
+    {% endfor %}
+        
+        
+</body>
+</html>

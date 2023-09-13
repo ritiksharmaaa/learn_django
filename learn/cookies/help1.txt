@@ -1,0 +1,19 @@
+#cookie Security issues .
+
+can misuse clienet data 
+can track user 
+clent can delete cookies.
+
+client can manipu;ate cookie 
+
+
+cookie limitatio .
+
+conatin 4096 bytes data .
+cookie can stored in browser and server .
+it is sent with each request .
+
+preffes session framework .
+
+
+

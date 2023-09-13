@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .btn{
+            margin-left : 12px ;
+            text-decoration : none ;
+            color : white ;
+            background-color : blue ;
+            border : 2px solid black ;
+            padding : 13px ;
+            border-radius : 12px ;
+
+        }
+    </style>
+    <h1>home page ! </h1>
+    <a class="btn" href="{% url 'page'%}">page  </a>
+    <a class="btn" href="{% url 'user'%}">user </a>
+    <a class="btn" href="{% url 'post'%}">post </a>
+    <a class="btn" href="{% url 'song'%}">song  </a>
+    
+</body>
+</html>

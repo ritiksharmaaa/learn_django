@@ -1,0 +1,66 @@
+# see how to make a custom middleware in programe . 
+
+a middleware  factory is a collable that takes a get _response collable and return a middleware. 
+Av middleware is collable that take a request and return a responsejust like a views 
+
+in this help we learn  function based view in this chapter when we are learning the class Bayview we can see how to make class based middleware.
+
+
+-------------------------------
+
+def my_middleware(get_response):
+    # One-time configuration and initialization.
+    def my_function(request):
+        #Code to be executed for each request before the views are called
+        response = get_response(request)
+        # Code to be executed for each request slash response after the view is called
+        return response 
+    return my_function
+
+
+let see waht is get_response : 
+
+The get _response callable provided by Django might be the actual view (if this is the last listed middleware) or it might be the next middleware in the chain. 
+
+The current middleware does not need to know or care what exactly it is just that it represents whatever come next. 
+-----------------my explanation -----------------
+suppose who you have only one middleware . so when it give response it give you views function response . 
+
+but if two or more middleware , it give firts middleware response whichhe get from another middleware reponse provide . 
+-----------------------------------------------------------------------------------
+
+They get _response callable for the last middleware in the chain not be the actual view but rather a rapper method from the handler which take care of applying view middleware calling the view with appropriate url arguments and applying template - response and exceptions middleware.
+
+Biddleware can live anywhere in your python project
+
+
+Activate Middleware : --- 
+
+to activate middleware component add it to M I D D L E W A R E list in your Django settings
+
+NMIDDLEWARE each middleware component is represented by string the full python path to the middlewar Factories class or function name the order is an IDDLEWARE meter because of middleware can depend on other middleware for instance authentication middleware store the authenticate user in the session therefore it must runafter session middleware.
+---------------------------------------------------
+so you have to maintain your order in your settings file when we are registering a middleware because as we know that key middleware using authentication middleware using the session middleware so it isvery important to write the middleware in a right place authentication middleware in upper and session middleware in the doorthis is my view 
+---------------------------------------------------
+
+ex -
+  middleware = [
+
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'blog.middleware.my_middleware', # please follow order 
+
+  ]
+
+
+example user request - 
+
+
+  security middeware - than session - middle ware - custom middleware . and so on so remember order . 
+  
+
+--------------------------------what type of function learn after and before views --------------------------
+
+it based of project requirement what is running before view 
+and after views that we write code according to the project .
+

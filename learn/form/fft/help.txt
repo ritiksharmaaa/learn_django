@@ -1,0 +1,129 @@
+FORM FIELD TYPE JUST LIKE MODEL FIELD TYPE WE HAVE EX CHAR , INTIGER , EMAIL FIELD ECT .
+
+
+if you're not choosing any mechanism so it having a by default the keywords args  my default visit is tax input and if you wanted to give an empty value you should useempty _value
+
+normailizing to string 
+
+Use Max Lent validator and min length validator if Max _length and min _length are provided otherwise all input are valid 
+
+Error messages key : require Require Max _length and min _length  if not follow it raise a default error we can change or override via error_messages . 
+
+Strip - if true default the value will be stripped of leading and trailing white space. mean when form summite it can remove space if you want space you need to false it .
+
+Empty _value - the value to use to represent empathy dot default to an empty stream. mean if empty is define when you summit form it give a default text ti those input field s .
+
+Example- name equals to forms dot care field parenthesis mainland equal to five max length equal to 15 error_ message is required enter your nam dividee
+
+name =forms.CharFields(min_length=5 , max_length=50 , error_messsage={'require' : 'Enter the name ' }
+
+ the erro message work when we use require inside field , we can override mwessahe to custom error message .
+
+
+
+boolean fields .
+
+BooleanField(**kwargs)
+default widget = CheckboxInput 
+empty = False 
+normalizers to : a python True OR False 
+validates that the value is True eg - the checkbox is checked , if the field has require = true .
+error_messages = require .
+
+
+
+
+
+integerField ------
+
+
+
+
+
+integerField(**kwargs)
+defalut widget is numberinput when field.localizer is false , else Textinput .
+empty_value = none 
+normalizers to : a python integer 
+Validate the given value is an integer uses MAxValueValidator r and MinValueValidator if Max _value and Min _value are provided leading and trailing white space is allowed as in python int function
+error_messages : require , invalid , max_value , Min_value 
+The Max _value and Min _value error message may contain %(limit _user) which will be substitute by the appropriate limit
+It take two option argument for MAxValueValidator 
+
+
+decimalField -------------
+
+
+DecimalField(**kwargs)
+default widget = numberinputwhen fiedl.localizer is false ,else textInput .
+empty_value = none 
+normalizers a python decimal 
+Validate the given value is an integer uses MAxValueValidator r and MinValueValidator if Max _value and Min _value are provided leading and trailing white space is allowed as in python int function.
+error_messsage = require , invalid ,max_value Min_value , max_digits , max_decimal_places, max_whole_digits
+The Max _value and Min _value error message may contain %(limit _user) which will be substitute by the appropriate limit , similary the max_digits , max_decimal_places , and max_whole_digits wrror message may contain %(Max)
+
+max_digit =  mean number after . four digit five or one digit 
+decimal_places = mean the maximum number of decimal places permiteed  
+
+this is importan for price point of views .
+
+
+float ----------
+
+
+default widgit - NUmberINput when normalizers is false else textInout 
+empty_value= None 
+normalize a python float 
+validate that the given value is float . uaes MAxValueValidator and MinValueValidator if max_value and Min_value  are provided .leading an trailing whitespaces is allowed as in python , as in python 
+float() function 
+
+error_message = require , invalid Min_value max_value 
+
+
+slug field ----------------
+
+default widget = textInput 
+emptyvalue = an empty string 
+normalizer to : a string 
+use validate_slug or validate_unicode_slug to validate that the given value conatain only letter, number , undersocre , and hyphen. 
+eroor message require valid 
+this field is intended for use in representing a model slugfield in form .
+it take a optional parameter 
+allow_Unicode = a boolean instructing the field to accept unicode letters in addition to addition to ASCII lettrs default to false
+
+
+Emailfields -----
+
+defalut widget = Emailfields 
+empty value = a empty string 
+normalizer to : a string 
+uses emailvalidator to validate that the given value is valid email adress , using a moderate complex expresion .
+error_message = require , invalid 
+it has two argument for validation , max_length , min_length  .
+
+
+
+URL field ---
+default widget = urlInput
+empty_value = an empty atring 
+normailizer = to a string 
+ uses UrlValidator to validate the given value is a valid url 
+ error message keys , require , invalid 
+ max_length , min_length , charfield max_lenth same as .
+
+
+
+
+
+
+
+ 
+Datefield ----
+de wid = DateInput 
+emp_val = none 
+norm = python data time fields 
+error_message = require , invalid 
+it take only one argument 
+ 
+
+
+ so one you can check on internet .

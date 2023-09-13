@@ -1,0 +1,79 @@
+# learning template view 
+
+djago.views.generic.base.TemplateView
+
+It rendered a given template with the context containing parameter capture in the URL
+
+This view inherit methods and attributes from following views:
+
+django.view.generic.base.TemplateResponseMixin
+django.view.generic.base.ContextMixin
+django.view.generic.base.view
+
+# this code have inside modules .
+
+class TemplateView(TemplateResponseMixin , ContextMixin , View):
+
+------------TemplateResponseMixin------------------
+
+it provide a mechanism  to construct a templateResponse given suitable contest the template to use it configurable and can be further customized by subclasses .
+
+attributes : - 
+template_name - The full name of a temple to use as defined by a string not defining a template _name will raise a jango.core.exception.impropertyConfiguration exception.
+
+template_engine - the any emie of a template engine to use for loading the template template _engine is passed as the use keyword argument to response underclass default is none which tells Django to search for the template in all configured engine.
+
+response_class - the response class to be returned by render _to _response method default is TemplateResponse the template and context of template response instance can be altered later example in template response middleware.
+
+if you need custom template loading or custom contacts object instantiations create a template response subclass and assign it to response _class.
+
+content_type  - the quantum type to use for the response content _type is passed as a keyword argument to response _class default is a nun - meaning that Django used text/ html.
+
+
+methods : - ---------------
+
+--- render _two _response(context , **response_kwargs) - whits return a self dot response _class instance.
+
+if any keyword argument are provided they will be passed to the constructor of the response class call 
+get _template _names() to who obtained the list of template named that will search looking for an existent template.
+
+
+---- get_template _names() - It return a list of template name to search for when rendering the template the first template that is found will be used.
+
+
+If template _name is a specified default implementation will return a list containing template _name (if it is specified)
+
+
+
+--------------------contextMixin --------------------------
+
+A default contest mission dad passes the keyword argument received by get _contacts _ data() as the template context.
+
+attribure : - 
+
+extra_context - A dictionary to include in the context this is convenient way of specify some contacts in as _view()
+
+methods : ----------
+
+get_context_data(**kwargs) - it return a dictionary representing the template contacts the keyword argument provide will make up the return context .
+
+
+--------------------------TemplateView ---------------
+
+view.py 
+
+from django.views.generic,base import TemplateView
+
+class HomeView(TemplateView):
+     template_name = 'school/home.html'
+
+     def get_context_data(self , *kwargs):    # this context data pass inside templates .
+         context = super().get_context_data(**kwargs)
+         context['name'] = 'sonam'
+         context['roll'] = 345
+         return context 
+
+-- in url -----
+
+path('home/' , viewsHomeView.as_view(extra_context={'course' : 'python'}) , name='home')
+

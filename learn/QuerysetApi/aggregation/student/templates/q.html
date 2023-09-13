@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    <style>
+
+        table{
+            border : 2px solid black ;
+            margin-left : 25% ;%
+        }
+
+        th , td {
+            border : 2px solid black ;
+            padding : 23px ;
+        }
+        .mid{
+            margin-left : 39% ;%
+        }
+    </style>
+    <h1 class="mid"> Student Informstion </h1>
+
+    <table>
+        <tbody>
+            
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>roll</th>
+            <th>marks</th>
+            <th>city</th>
+            <th>passing date </th>
+            <th>admissiondate</th>
+        </tr>
+        
+        {% for stu  in stu   %}
+            
+       
+            
+        <tr>
+            <td>{{stu.id}}</td>
+            <td>{{stu.name}}</td>
+            <td>{{stu.roll}}</td>
+            <td>{{stu.marks}}</td>
+            <td>{{stu.city}}</td>
+            <td>{{stu.passdate}}</td>
+            <td>{{stu.admdatetime}}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    </table>
+</body>
+</html>

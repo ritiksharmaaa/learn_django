@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .i{
+            background-color : green ;
+            opacity: 0.5 ;
+            color : white ;
+            margin-left : 05% ;
+            margin-right : 5% ;
+            padding : 12px ;
+        }
+
+        .banana{
+            background-color : light ;
+            color : red ;
+            font-size : 22px ; 
+        }
+    </style>
+
+    <h1 class='i'> i am create view with form </h1>
+
+    <form action="" method='post' novalidate>
+        {% csrf_token %}
+        {{form.as_p}}
+    <input type="submit" value="submit">
+    </form>
+    
+</body>
+</html>

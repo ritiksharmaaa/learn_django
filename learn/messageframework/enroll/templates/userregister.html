@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UsserRegistration</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .center {
+        margin-top: 12px;
+        padding: 23px;
+        align: center;
+        border: 2px solid black;
+      }
+
+      .form {
+        margin-top: 34px;
+        border: 2px solid blue;
+        padding: 134px;
+        margin-left: 20%;
+        width: 434px;
+      }
+
+      .form-message {
+        margin-top: 34px;
+        margin-left: 20%;
+        width: 634px;
+      }
+
+      .button {
+        background : blue ;
+        margin-top: 23px;
+        border: 2px solid blue;
+        padding: 10px;
+        color: white;
+        border-radius: 2px;
+      }
+
+      #id_name ,#id_password , #id_email {
+
+        width :245px; 
+        height : 40px ;
+        margin-top : 34px ;
+        
+      }
+
+      .success{
+        color : green ;
+      }
+    </style>
+    <h1 class="center">User Register page</h1>
+    <div class="form-message">
+      {% if messages  %}
+      
+      {% for message  in messages   %}
+     <h1 class="success">     
+       {{message}}
+       </h1>
+      {% endfor %}
+        
+        
+      {% endif %}
+        
+    </div>
+    <div class="form">
+      <form action="" method="POST" novalidate>
+        {% csrf_token %}
+         {{form.as_p}}
+        <button class="button" type="submit">submit</button>
+      </form>
+    </div>
+  </body>
+</html>

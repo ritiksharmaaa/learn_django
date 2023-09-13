@@ -1,0 +1,20 @@
+# how to use Q for objects . 
+
+q objects is an used to encapsulation a collection of keywords argument . these keyword argument are specified as in field lookup .
+
+if you need to excute more complex quire you can use Q object .
+
+Q objects can be combined using the & and | operators . when an operator is used on two Q objects , it yieds a new Q objects .
+
+import from dajngo.db.models import Q 
+& AND Operator 
+
+| (or ) operator 
+example : - Student.objects.filter(Q(id=6) & Q(roll=106))
+
+
+-negative Operator 
+
+ example : - Student.objects.filter(-Q(id=6))
+
+ 

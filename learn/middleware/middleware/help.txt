@@ -1,0 +1,56 @@
+# Biddleware is a framework of hooks into Django request slash response processing.
+
+It's a light low - level plug-in system for globally alterating jango input and output each middleware component is responsible for doing some specific function. 
+
+we We have two type of middle players: 
+
+Built in middle wares
+ custom middleware
+ ----------------------------------------------------------------------------------------
+
+ In this video we are talking about custom middleware how to make it and how to use a custom middleware in our project.
+
+ Let's check how the middleware work:--
+
+simple middle ware mean there is third persion between two convesTION PEOPLE . 
+ 
+the middleware have are used to do some specific task . 
+
+
+a man send letter to a woman . but betwwen this a third perion is came his brother . we specfie his work to gave threat to peson who try to went and reach to his sister . 
+
+. when request goes through his sister they stop the request and check it . and say show me other wise i teardown this letter . 
+
+after the request pass from brother another middleware are came which is her  father .    and his function to do some correction in his letter , this is his specfie work .  
+
+
+when request is reach . so a fedback also came but sam when response came her brother and and father are again became a middleware. 
+
+so this type our request and response came and go . 
+so here men is user , and woman is our server . 
+
+some may be his brother return the feedback in i kill you if you do this , 
+
+may his brother say yes but father say no so father also gave reponse for that things . 
+--------------------------------------------------------------------------------------------
+
+let learn technically : -- 
+
+normal user send request  server give response . 
+
+but middleware 
+
+request goes to middleware than it some do process to diffrent type of request , that send in to server and vice versa .
+
+middleware can may be one or more than one . impo ********* 
+
+
+sometime middleware one can also gave you response . 
+
+
+
+let how check how can we make a programatically middleware . in help text 1
+
+
+
+

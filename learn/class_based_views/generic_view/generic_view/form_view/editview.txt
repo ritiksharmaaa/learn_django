@@ -1,0 +1,90 @@
+3 edit view 
+this view are generaly use for editing content : -
+
+form view 
+create view 
+update view
+delete view
+ -------
+
+ from django.views.generic.edit import FormView
+
+ a view that display a form , on error , redisplayys the form with validation error on success , redirect to a new Url 
+
+ this views inherit methods and attribute from \the folloeing views :-
+
+ django.views.generic.baseTemplateMixin
+ django.views.generic.edit.BaseFormView
+ django.views.generic.edit.Form.Mixin
+ django.views.genericedit.ProcessFormView
+ django.views.generic.base.View
+
+ -------formmixin -----------
+
+ attribute : - 
+
+ initial - a dictionary conatianing initial data for the form 
+ form_class = the form class to instance 
+ success_url = the url to redirect tp when the form is successfully processed .
+
+
+ methods : - 
+
+ get_initial() - reterive initial data for the form by default returns a copy of initial 
+
+ get_form_class() - retrive the form class to instantiate . by default form_class .
+
+ get_form(form_class=None) - instantiate an instance of form_class using get_form_kwargs(). if form_class is not provide get_form_class() will be used . 
+
+
+ get_form_kwargs() - is set to get_initial(). if the request is a post or put the request data (request.POST and request.FILES) will be provide.
+
+ get_prefix() - determine the prefix for the generated form return prefix by default
+
+ get_success_url() - determine the url to redirect to when thatform is successfully validate return success_url by default 
+
+ form_valid(form) - return  to get_success_url() .
+
+ form_invalid(form) - renderd a response provideing the invalid form as context 
+
+ get_context_data(**kwargs) - call get_form() and adds the result to the context data with the name 'form '
+
+
+
+ --------------------processFormView---------------
+
+ django.views.generic.edit.ProcessFormView
+
+ a mixin that provide basic http GET and POST workflow
+ extends 
+
+ django.views.generic.base.View
+
+ get(request , *args , **kwargs) -  renderd a response using a context created with get_context_data() 
+
+ post(request , *args , **kwargs) -  construct a form check the form for validity and handel it accordingly 
+
+ put(*args , **kwargs) - the put action is also handel and passes all parameter through to post() 
+
+ ----------------------FormView---------------
+
+ from django import forms 
+
+ class COntactForm(forms.Form):
+     define fields 
+
+
+views.py -------------------
+
+from django.views.generic.edit import FormView 
+
+class formnae(FormView):
+    template_name = 'school/context.html'
+    form_class = COntactForm
+    success_url = "/thakyou/"
+    def form_valid(self , form):
+         print(form)
+         print(form.cleaned_data['name])
+
+class thankouView(TemplateView):
+template_name = 'schhol/thankyou.html'

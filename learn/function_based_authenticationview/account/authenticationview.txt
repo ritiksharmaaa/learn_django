@@ -1,0 +1,125 @@
+# in previous we learn abouth authication and permisiion 
+
+jango provide several views that you can use for handling login logout and password management.
+
+These make use of the stock oath form but you can pass in your own form as well.
+
+just we need to make own form for crete change and many more django alredy mke this we use as easy way 
+
+Django provide no default template for the authentication view.
+
+You should create your own template for the view you want to use.
+
+url.py
+
+here we have all thing are alredy built it form view model , url  each things . even all full fledge project is made . we just get it and use it . 
+
+you just add : - this is inside urls file . 
+
+path('account/' , include(django.contrib.auth.urls.))
+
+these all url will be available : - 
+
+account/login/ [name='login']
+account/logout/ [name='logout']
+account/password_change/ [name='password_change']
+account/password_change/done  [name='password_change_done']
+account/password_reset  [name='password_reset']
+account/reset/<uidb64>/<tocken>/ [name='password_reset_confirm']
+account/reset/done/ [name='password_reset_complete']
+
+
+where you definee template :
+
+in any app templates inside registrtion/login.html and all html related to auth . 
+
+
+
+in password_reset you have to define some code in setting.py 
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+how we change redirect defult after login . 
+
+in authentication view . 
+
+
+define this code in setting.py 
+
+
+LOGIN_REDIRECT_URL = '/'
+
+
+
+
+
+
+
+
+
+---------------decorator in authentication view inside function based view . -----------------
+
+1 - login_required and staff_memeber_required .
+
+syntax : - 
+
+login_required(redirect_field_name='next' , login_url=None)
+
+If the user is logged in executed the view normally the view code is free it was the user is logged in.
+
+If the user is not logged in in redirect to setting login _url passing the current abslote path in the querystring . example : - /account/login/?next=/account/profile/
+
+import - django.contrib.auth.decorators.login_required
+
+where , 
+
+redirect_field_name : - July after Messenger If you would prefer to use a different name for the parameter login _required() Take an optional redirect _field _name parameter if you provide a value to redirect _field _name you will be most likely needed to customize your login template as well since the template context variable which stored the redirect path will use the value of redirect _field and _name as it key rather than nextthe default.
+
+login_url - If you don't specify the login _url parameter you will need to ensure that the settings dot login _url and your login view are properly associated.
+
+the setting.LOGIN_URL Also accept view function name and name url pattern please allow you to freely remap your login view within your url without having to update the settings.
+
+
+
+---staff_memeber_required(redirect_field_name='next' , login_url='admin:login')
+
+These decorator is used on the admin views that require authorization of view decorator with the function while having the following behavior.
+
+
+
+-  If the user is logged in as a staff member user dot is underscores staff equal to true and is active user dot is _active 2 execute the view normally.
+
+-  Otherwise the request will be redirect to the URL specify by login _URL parabeter with the originally request path in a query set string variable specify by redirect _field_name .
+
+example  : - 
+
+ /admin/login/?next=/profile/
+
+
+ exmmple code : - 
+
+   from dajngo.contrib.admin.view.decorators import staff_memeber_required
+
+   @staff_memeber_required
+   def profile(request):
+       return render(request , 'registration/profile.html')
+
+
+----------permisssion_required decorator---
+
+permission_required(perm , login_url=None , raise_exception=False)
+
+It's a relative common task to check whether a user has a particular permission for that reason django provider shortcut for the case the permission _require() decorator. 
+
+Just like the has _ perm() methods , permission name take the form"<app label>" . <permission codename >'
+
+example : - 
+
+  from django.contrib.auth.decorators import permission_required 
+
+  @permission_required('blog.can_add')
+  def profile(request):
+      return render(request , 'registration/profile.html')

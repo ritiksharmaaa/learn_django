@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Page Data</h1>
+    <style>
+
+        table , th , tr  ,td {
+            border : 2px solid black ;
+        }
+    </style>
+    <h1> user data ! </h1>
+    <h3> data 1 </h3>
+    <table>
+        <th> USername </th>
+        <th> firstname </th>
+        <th> lastname </th>
+        <th> email  </th>
+        
+        {% for dt  in date1  %}
+
+        
+        <tr>
+            <td> {{dt.page_name}}</td>
+            <td> {{dt.page_cat}}</td>
+            <td> {{dt.page_publish_date }}</td>
+            <td> {{dt.user}}</td>
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+
+
+    <h3> data 2  data filter by pagecat family  </h3>
+    <table>
+        <th> USername </th>
+        <th> firstname </th>
+        <th> lastname </th>
+        <th> email  </th>
+        
+        {% for dt  in date2  %}
+
+        
+        <tr>
+          
+            <td> {{dt.page_name}}</td>
+            <td> {{dt.page_cat}}</td>
+            <td> {{dt.page_publish_date }}</td>
+            <td> {{dt.user}}</td>
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+    
+    <h3> data 3   data filter pages vis user email   </h3>
+    <table>
+        <th> USername </th>
+        <th> firstname </th>
+        <th> lastname </th>
+        <th> email  </th>
+        
+        {% for dt  in date3  %}
+
+        
+        <tr>
+          
+            <td> {{dt.page_name}}</td>
+            <td> {{dt.page_cat}}</td>
+            <td> {{dt.page_publish_date }}</td>
+            <td> {{dt.user}}</td>
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+
+
+    
+
+
+    
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Start cashier if another is not specified in your setting file the cache is per process and thread saves.
+
+Each process will have its own private case instance which means no cross - process caching is possible this obviously also means the local memory case is not particularly memory - efficient.
+
+It probably not good choice for production environment if it nice for development
+
+SETTING FILE SETTING 
+
+
+CACHES = {
+    'default' : {
+        'BACKEND': 'django.core.cache.backends.LocMemCache',
+        LOCATIONS : 'unique-snowflake' # this cache Location is used to identify individual memeory stores . but you can findit . 
+            }
+}
+
+
+

@@ -1,0 +1,111 @@
+# Built in middle wares. 
+
+SecurityMiddleware - TheDjango.middleware.security.security middleware provide several security enhancement to the request slash response cycle.
+
+Each one can be independently unable or disable with a setting.
+
+SECURE _BROWSER _XSS _FILTER ===
+
+  If true the security middleware set the ax - XSX - protection: Mode equal to block header on all response that do not already have independently
+
+  modern browser daunton ex a - ax ex - protection sttp header anymore although the settings offer little practical benefit you may still want to set the header if you support older browser default is false.
+
+  enable simple type this than = or true or false 
+
+
+  ---------------------------------------------
+
+SECURE _CONTENT _TYPE _NOSNIFF ===
+
+  If it's true the security middleware set the ax - content type - options : nosniff header on all response that do not already have it default is true
+
+  -------------------------------------------
+
+
+SECURE _HSTS _Inc LUBE _SUBDOMAINS ===
+
+   if through the security middleware at the includes subdomain directive to the sttp district transport security header it has no effect unless SECURE _hsts _seco and ds is set to a non - zero valuedefault is false.
+
+
+
+SECURE _HSTS _PRELOAD === 
+
+
+   if true the security middleware add the preload directive to the STTP strict transport security error it has no effect unless SECURE _HSTS _SECO and ds is set to non - zero value default is false.
+
+S E C U R E _H S T S _S E C O N D  =====
+
+    if SAT2 or non - zero integer value the security middleware set the sttp strict transport security header on all response that do not already have it default is 0
+
+
+SECURE _REDIRECT _EXEMPT ====
+
+   If a url patch match or regular expression in the list does request will not be redirect to STTPS the security middleware strip leading slash from URL path soup pattern should not include the example SECURE _RETIRECT _exe mpt _equal to [r^no-ssl/$, ...], If Sikh SECURE _SSL _redirect is false the setting has no effect default is empty list.
+
+SEECURE _REFERRER _POLICY ====
+
+   
+
+SECURE _SSL _HOST === 
+
+  IfastringexampleSecure.example.com all ssl redirect will be directed to this post rather than the original - request host example Ww.example.com if SECURE _ssl _re dirct is false the setting has no effect default is none.
+
+As ECURE _SSL _re DIRECT.===== 
+
+
+   if true the security middleware redirect all non H T T P S requests to H T T P S except from those url matching regular expression listed in secure _redirect _E X E M P T default is false.
+
+
+
+
+
+
+-------------------------------------- common middelware---------------------------
+
+CommanMiddleware - that's a few convenient four perfectionista 
+
+fourbids  access to user agent in DISALLOWED _USERE _AGENTS settings which should be a list of compiled regular expressions object.
+
+Perform URL rewriting based on the APPEND _as LASH _PREPEND _WWW settings.
+
+if APPEND _SLASH is true and the initial URL does not end with a slash and it is not found in URL config then a new url is formed by appending a slash at the end if this new url is found in the url CONF Conf then Jengo redirects these requests to the new url otherwise the initIs proceeds as usual 
+
+
+for example geekshot.com/home Will we redirect to geekshot com slash homes if you dont have a valid url pattern for geekshow com slash home but do have a valid pattern for geekshot .com/home/
+
+
+
+If PREPEND _WWW is true URLS that lag a leading 'www ' dot will be redirect to same url with a leading WWw 
+
+Both of these options are meant to normalize url the philosophy is that each url should exist in 1 and only 1 place technical url geek show com is distinct from geekshow.com/homes search - engine index would treat them as separate urls - so its best practice to normalize urls.
+
+
+---------------------------update cache middleware --------------------
+
+
+UpdateCacxheMiddleware Hand fetch from cash a middleware - these middleware belongs to cash a middleware its enable the site - wide cashie if these are enable each Dengue - powered page will be cashier for long as the CACHE _MI double DLEWARE _SECOND defines .
+
+MessageMiddleware - enable cookie - and session - based message support
+
+SessionMiddleware - Enable session support
+
+Authentication middleware - it adds the user attribute representing the current - logged - in user to every incoming S T T P request object
+
+CsrfViewMiddleware - it's act protection against cross site request forgeries by adding hidden form field to post form and checking request for the correct value.
+
+XframeOptionMiddleware - Nickjacking protection via the ax - frame - option header
+
+FlatpageFallbackMiddlware - should be near the bottom as its last - resort type of middleware.
+
+RedirectFallbackMiddleware - Should be near the bottom as its a last - resort type of middelware
+
+
+LocalMiddelware - one of the top most after SessionMiddleware huge session date and UpdateCashierMiddleware modify vary heater
+
+
+ConditionalGetMiddleware - Before any middleware that may change....etag had her after JBefore any middleware that may change the response it set the etag had her after gZipMiddleware show it was not calculatean etag header on GZI double PED contents.
+
+
+GZipMiddleware  -- before any middleware that may change or use the response body after UpdateCacheMiddleware modifies vary header . 
+
+

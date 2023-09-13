@@ -1,0 +1,25 @@
+# delete views . 
+
+from django.views.generic.edit import view 
+
+Have you the display confirmation page and delete all existing objects the given object will only be delete if the request method is post if this view is fetched via gate it will display a confirmation page that should contain a form that posts to the same url.
+
+inherit : - 
+
+all class as usewally import 
+
+
+attribute : - 
+
+template_name_suffix : - 
+
+success_url : - 
+
+
+
+methods : - 
+
+delete(request , *args , **kwargs ) - Retrieve the target object and call it delete() Method then redirect to the success u r L
+
+get_sucess_url() -return the URL to redirect to Ben the nominate object has been successfully delete return success _url by default.
+

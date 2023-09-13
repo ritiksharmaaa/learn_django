@@ -1,0 +1,28 @@
+there is lot of fild type ehich you can use it from internet but you have to knoy about some specail fields .
+
+
+
+Relatationship Field :
+
+Foreign field = take two argument 1 - model name , 2 - on_delete --- dat aintegrity option like on cascade delete , protect , null 
+
+many to one, 
+many to many ,
+one to one 
+
+
+many to one -----
+
+synatx = models.Foreignkey(classname , on_delete ,**option)
+
+
+
+
+-------------------------------------
+
+manytomany fields ----
+
+
+it just like a book have multiple authore , and authore can write multible books 
+
+

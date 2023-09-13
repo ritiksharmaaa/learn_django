@@ -1,0 +1,10 @@
+Use a subset of python array - slicing syntax to limit your query set to a certain number of results this is the equivalent of SQL  Limit A and OFFSET.
+
+example :- 
+
+  Student.objects.all()[:6] this return 6 objects . 
+
+
+  [5:10]
+  [-1]- this is not valid 
+  [:10:2]

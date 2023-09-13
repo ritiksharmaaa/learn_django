@@ -1,0 +1,32 @@
+# update views 
+
+django.views.generic.edit import UpdateView 
+
+A view that display a form for editing an existing object redisplaying the form with validation error  or if they are any and saving changes to the object the uses are firm automatically generatefrom the object model class unless a form class is manually specified.
+
+
+inherit : - 
+
+detail = Single object template response mixin 
+base = Template response mixin
+edit = Base update views
+edit = bees model form mixin
+edit = form mixin 
+
+detail = single object mixin
+
+edit = Process form view.
+
+base = view 
+
+
+attribute : - 
+
+template_name_suffix - 
+
+object - when using update we have access to self object which is the object being updated.
+
+
+----------------------
+
+for do  pratical we need to create a createview than we check how update view work  

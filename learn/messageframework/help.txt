@@ -1,0 +1,104 @@
+#in this folder we learn about how to use message framework in django .
+
+message framework allow you to temporarily store message in one request and retirieve them for display in a subsequent request . 
+
+django support for full cookie and session-based messaging for both anonymous and authenticated user . 
+
+for use message framework some module is present in setting .py file . 
+
+install-app = dj.contrib.message 
+in middelware sessionmiddelwere and message.middelware are present 
+context_processors . = processor.messager 
+
+
+
+message level and message tags  .  -------------
+
+The message framework is based on Confugurable  level architectures similar to that of the python logging model
+
+message level - message levels allow you to group message by type so they can be filtered or display diffrent in views and templates 
+
+message tag are a string representation of a strict message level plus an extra tag that were added directly in the view tag are stored in string and are separated by spaces typically messagetags are used as css classes to customize message style based on message type
+
+level and its tags -----------
+
+debug = debug val = 10 , in production all debug message ignore 
+info = info 20 , , information messaage for the user .
+success = seccess 25 , an action was succesfully update profile 
+warning = warning = 30 a failur did not occur but may be imminent . 
+error = error , 40 , an action was not succesfully or some other failur occured . 
+
+all write label in capital letter . 
+
+
+hpw to write a message .  
+
+add_message(request , label , message , extra_tags="" , fall_silently=False ) 
+this method is use to add and write a message level .
+
+setting fail_silently TRUE only hide the message failur that would otherwise occur when the message framework disable and one attempt to use one of the add_message fa,ily metthod it does not hide failur that may occur for other reson . 
+
+this is used because if we give this code to third party person application and they are not ussing a message frsmework that it ignore all fial message if they not use message framework . 
+
+
+module import from .
+ 
+
+ from dajngo.contrib  import messages 
+
+  we have also have shotcut method to use message not this upper bulky code reqiure to use a messages .
+
+  message.debug(request , '%s sql statement were executed '%count)
+  message.info(request , three credits remain in your account ')
+
+
+
+  how to display messages 
+
+  {% if message %}
+  {% for message in messages %}
+  {% if message.tags %} {{message.tags}} closethis if  
+{{message}}
+close all templates tags . 
+
+
+
+
+
+
+message method -------------
+
+get_level() 
+and set_level()
+ 
+ this method is used to reterive the current effictive level 
+ from django.contrib import messages 
+
+ current_level = get_level(request)
+
+
+ set_level() - this method is used to set mininum recorded level .
+
+ from django.contrib import messages 
+ messages.set_level(request  , messages.DEBUG)
+ this will recorded with a level of DEBUG and higher . 
+
+the value is default set can see higher than that value .
+
+value mean each code whic h came from each level of message of code . 
+bydefault its a info and it code is 10 . when we set any level its only show uper code messages in templates .
+
+
+
+css in in message === 
+
+two metthod change class name or dynamic class in p tag inside messages based on what is message tags 
+
+
+in class name changw do thus in setting .py file 
+
+from.django.contrib.messages import constants as messages_s 
+
+in last of setting or any where but good in last 
+
+MESSAGE_TAGS - {messages_s.ERROR:"CUSTOMCLASS "}

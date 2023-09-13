@@ -1,0 +1,162 @@
+programing\django\learn\class_based_views\generic_view
+
+
+Class - based view provide an alternative way to implement queues as python object instead of function.
+
+They do not replace function based view
+
+- base class based views / base view 
+
+- generic classed-based views / generic view 
+
+
+we already learn base view : --\
+
+
+now we learn generic classed based view call generic view . 
+
+--------------------------why generic clased based view ---------------made by dajngo developer --------
+
+Jango generic  View are built off of those face view and were developed as a shortcut for common uses patterns such as displaying the detail of an object.
+
+They take certain common items and patterns found in views development an abstract them so that you can quickly write common views of data without having to repeat e yourself.
+
+
+this genegric view help to do comman work -----------
+
+display view - listview , detailview 
+edit view - formview , updateview , deleteview 
+date view - ArchiveIndexView , DateDetailView  , YearArchiveView , MonthArchiveView , WeekArchiveView , DayDetailView , TodayArchiveView 
+
+
+generic display view - 
+
+lsitview 
+detail view 
+
+django.views.generic.list ListView  - page representing a list of object 
+
+Boy Lee this view is executing self object _list will contain the list of object(Usually but not necessary a query set) That The View is operating upon
+
+Vijay Singh telecommittee and these view inherit method and attribute from the following views:
+
+django.views.jewelry.list.multiple object template response mixin
+Django.view.jendrich.page.template response mixin  - we alredy see it .
+Django.views.jailbreak.list.base listview.
+Django dot views dot genek dot list multiple object mixing
+django.view.generic.baseview ---we lredy seet 
+
+
+
+--------------multiple object Template Response mixin -------------
+
+A mixin class that performed template - based response rendering four views that operate upon a list of objects instances require that the view it is mixed with provide self object _list the list of object instance that the views in operating on self object_list may be but it not required to be a query seet
+
+These inherit method and attribute from the following view.
+
+- 
+
+django.view.generic.base template response mixing.
+
+attribute: - 
+
+  Template _name _Sufix - the suffux  to append to the auto - generated candidate template name default suffix is _list.
+
+  methods : - 
+
+   get_template_name() - it returned a list of candidate template _name
+
+
+---------------------------baselistView -------------------
+
+
+A base view for displaying a list of objects it is not intent to be used directly but rather as a parent class of the Jengo views generic listview or other viewers presenting lists of objects.
+
+the view inherited method and attribute from the following views:
+
+- Django.use.generic.list.multiple object mixin
+- Django.views.generic.base.view
+
+method : - 
+
+ get(request , *args , **kwargs): - It add object _list to the contacts if allow _empty is true then display an empty list if allow _empty is false then raise a 404 error
+-------
+
+
+---------------------------------multiplw object mixin ----------------------------
+
+
+Django.view.generic.lease multiple object mixin
+A mix in that can be used to display a list of object .
+
+if PaGinated_by is specified Django will paginate the result return by this you can specify the page number in the URL in 1 or two ways.
+
+use the page -parameter in the Url conf .
+
+pass the page number via the page_string parameter .
+
+LUR list R1 - based not() based so the first page would be represent as page 1 .
+
+as a special case you are also permitted to use last as a value as page 1 
+
+as a special case you are alsp permitted to use last as value for page. 
+
+These allow you to access the final page of result without first having to determine how many pages there are not the page must be either a valid page number of the value last any other value for page will result in a 404 error.
+
+
+atributes : - 
+
+ allow_empty- A bullet is specifying whether to display the page if no object are available if this is false and no object are available the view will raise a 404 instead of displaying an empty page by default this is true.
+
+ model - The model that the view will display data for specifying model equals students is effective the same as specifying queries at equal to student.object.allwear stands for student default manager.
+
+ queryset - Aquarius sat that represent the objects its provide the value of queries at supersets and value provided for model.
+
+ ordering - A string or list of string specifying the order to apply to the query set valid value are the same as those four order _by() 
+
+paginate_by - An integer is specifying how many objects should be display per page if this is given the view will paginate object with paginated _by object per page this view will expect either a page query string parameter via request dot get or a page variable specify in the url conf.
+
+paginate_orphans - An integer is specifying the number of overflow objects the last page can contain the extended _by limit on last page by up to paited _orphans in order to keep the last page from having a very small number of objects.
+
+page_kwargs - a string is specifying the name to use for the page parameter the view will expect these parameter to be available either as a query string parameter via request dot get or as a kwarg variable specify in the url .comdefault to page. 
+
+paginate_class - Oppaginator class to be used for pagination by defaultjango.Co.Paginator.Paginator is used if the custom pejinator class does not have the same constructor interface as a Jango .Co.paginator.paginators you will also need to provide an implementation for get _paginator()
+
+
+
+
+methods -----------
+
+get_queryset() - Get the list of item for the view this must be an iterable and may be queries set in which queries set is specifying behavior will be enable.
+
+get_ordering() - Return a string or iterable of string that defines the order that will be applied to the queri set . 
+return ordering by default.
+
+paginate_queryset(queryset , page_size) - Return of four tapal containing(Paginator, page ,object _list , is _paginated)
+
+Constructor by paging data queries at into pageof size if the request contain a page argument either as a capture url argument or as a get argument object _list will correspond to the object from the page.
+
+
+-------------------------methods -------------
+
+get_context_object_name(object_list) - return the contacts variable named that will be used to contain the list of data that the view is manipulating if object list is queries of Django object and contacts _object _name is not set the context name will be the model _nameof the model that the query set is composed from with post fix _list appended for example the model article would have a contacts object name article _list.
+
+
+get_contect_data(**kwargs) - Return context  data for displaying the list of objects
+
+context ; -  
+
+   object_List: The list of the object at the view is displaying if contacts _object _name is specified that variable will also be set in a context with the same value as object_ list.
+
+   is_paginated : A bullion representing whether the results are paginated specify this is set to false if no pay size has been specified or if the label object do notspan multiple pages.
+
+   Paginator: an instanceofJango.Co.paginators.paginator if the page is not paginated the context variable will be none.
+
+   
+
+
+
+
+
+
+

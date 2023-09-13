@@ -1,0 +1,6 @@
+# we can use static site caching , but not recomended for static use it dynamic . but we take example with static .
+
+# to see database  cache migrate first . and to see downlord sqllite3 database .
+
+
+just do configuration no exrtra code write for this type od caching . it automatic when request it cache it . 

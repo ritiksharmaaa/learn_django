@@ -1,0 +1,54 @@
+Request/response signals .. 
+
+
+request/response Signals - signals sent by the core framework when procesign a request . 
+
+import area == dajngo.core.signals .
+
+1 == 
+
+request_started(sender , envion ) - sent when django begins processing an http Request . 
+
+sender - the handler class - eg django.core.handlers.wsgi.WsgiHandler - that handel the request . 
+
+envion - the environ dictionary provide to the request . 
+
+request_finished(sender) - sent when django finishs delivering an HTTP response to the client 
+
+got_request_exception(sender , request) - the signals is sent whenever Django encouter an exception while processing an incoming Http Request. 
+
+
+
+# Management Signals : -   signals sent by django admin 
+
+ import from django.db.models.signals 
+
+ pre_migrate(sender , app_config , verbosity  , interactive , using,  plan ,  apps) - sent by the migrate command before it start to install an application , it not emitted for application that lack a models modules . 
+
+ sender - an appcongig instance for the application about to be migrate / synced. 
+
+ app_config - same as sender . 
+
+ verbosity - indicate how much information manage.py is printing on screen . 
+
+ functions which listen for pre_migrate should adjust what they output to the screen based on the value .  
+
+ interactive - if interactive is  true , it 's safe to prompt the user o input things on the command line . if interactive is false . function which listen for this signals should not try to prompt for anythings . 
+
+ for example = the django.contrib.auth app only prompt to create a superuser when interactive is true . 
+
+ using - the alias of database on which a command will operate . 
+
+
+
+ ==============
+
+ paln - the migration plan that is going to be used for the migration run . while the plan is not public API . 
+ this allow for the rair case when it is neccessary to know the plan . a plan is a list of two-tuple . with the first item beign the instance of a migation class and the second item showing if the migration was rolled back ()True  or aplied ( flase)
+
+apps - an insctance of apps conataining the state of the project before the migration run . it should be used instead of the global apps registry to retrieve the model you want to perform opertion . on 
+
+post_migration  many 
+
+
+more watch in vidio og gek shows . 

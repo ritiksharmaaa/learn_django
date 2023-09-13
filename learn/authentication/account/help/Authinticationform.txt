@@ -1,0 +1,40 @@
+in this from we learn create login form using authincation form and profile page and logout . 
+
+Before making login form you have to know some function 
+
+1 = authenticate()--
+   
+     
+      authenticate(request=None , **credentials ) - this is used to verify a set of credentials its take credentials as keyword argument username and password for the default case check them against each authentication back end and return a user object if the credential are valid for a back end .
+
+      If the credentials are not valid for any vacant or if a vacant raise permission deny its return none
+
+      The quest is an option H T T P request which is passed on the authenticate() Method of the authentication backends.
+
+
+      example : - 
+         
+
+           user = authenticate(username='sonam' , password='geekyshows' )
+
+           if valid user have user if not user hase none value . 
+
+
+
+2 - login()  
+
+   
+       login(request , user , backend=None) -- Log a user in from a view use login() It's take an H T T P request object and the user object dot login() Save the user id in the session using Django session framework.
+
+
+       When a user login the user id and the backend that was used for authentication are saved in the user session this allows the same authentication back end to fetch the user detail on a future request.
+
+
+3 - logout()
+
+
+       logout(request) - A user whom has been loggin()  via dJango . configure. login() use dJaguar.contrib  with your view let's take an hTTP request in objects and has no return value.
+
+       When you call log out the session data for the current request is completely cleaned outall the existing data is removed this is prevent another person from using the same web browser to log in and have access to the previous user session data.
+
+       

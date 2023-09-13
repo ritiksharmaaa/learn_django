@@ -1,0 +1,278 @@
+# in this we laer method that do not return new queryset . 
+
+file name school 2  --
+
+wecan use school models in this chappter . 
+
+-----------------------------------------------
+
+1 ====
+
+
+reterive a single object : - 
+
+  get() - 
+
+   it return Turn on le single object if there is no result match it will be raise Does Not Exist exceptions if more than one i.tem match the get query it will raise multiple object returns.
+
+   example : - 
+
+     student.object.grt(pk=1) name="nirmal" city="uttarpradesh"
+
+
+
+2 === 
+
+first() - 
+
+   It returned the first object match by the query set or None  if there is no matching object if the query set has no ordering defined then the query set is automatically ordered by the primary key.
+
+
+example : - 
+
+ student.objects.first()
+
+ or 
+ 
+ student-data = student.object.order_by(""name").first()
+
+
+
+
+3 === 
+
+   last() - It returned the last object matched by the querieset or none  if there is no matching object if the query set has no ordering defined then the query set is automatically ordered by the primary key.
+
+   example : - 
+
+   school.objects.last()
+
+4 == 
+
+ latest(*fields) - 
+
+   It returned the latest object in the table based on the given field(s)
+
+   example : - 
+
+    school.objects.latest("pass_data")
+
+5 ==
+
+earliest(*filds) -It returned the earliest object in the table based on the given fields(s)
+
+example : - 
+
+  School.objects.earliest("pass_data")
+
+
+6 == 
+
+ exists() -
+
+   it returned true if the queries had contained any result and false if not these try to perform the query in the simplest and fastest way possible but it does execute nearly the same query as a normal query set query.
+
+   example = 
+     
+
+     student = student.object.all()
+
+     print(student.exists() )
+
+
+
+
+------------------methods related to crud -------------------------------------
+
+
+7 == 
+
+create(**kwargs)  -- A convenience methods for creating an object and saving it all in one step.
+
+example : -
+
+
+s = student(name="sammer" , roll=112 , city='Bokaro' , marks=60 , pass_data='2020-5-4') this is gernal methids which we use to save data in our database .
+
+s.save() inside parameter which we not give but it writen there --  force_insert=True 
+
+
+--------------new methods-------------
+
+  Student.object.create(name=name , emall=email , pass_data = pass_data , city = city and many more . )
+
+
+
+8 ==
+
+  get_or_create(default=None , **kwargs)  -  a convenience methods for looking up an object with the given kwargs ( may be empty if your model has default for all fields) create one if necessary.
+
+  it  return a  tapal(object , created ) Ware object is the retrieved or created object and create is a Boolean specifying whether a new object was created. 
+
+example : - 
+
+ student_data , created = Student.object.get_or_create(name=name , roll=roll , city = city , pass_data=pass_data , marks=marks)
+
+
+ #the created give true or false data is created or not .
+
+
+
+9 == 
+
+update(**kwargs) - perform an sql update query for the specify field and return the number of row (which may not be equal to the number of row update if some row already have the new value.)
+
+student_data = Student.object.filter(id=2).update(name=name , marks=marks)
+
+update bulk data ---
+
+student_data = student.object.filter(marks=60).update(city=rohtas) mean the student who have marks is 60 update there city .
+
+and the var student_data give how mnay row it can update , one so 1 two s0 2 
+
+
+note : - 
+student.object.get(id=2).update(name=name , email= email )
+
+we think why we can make this using get but we do with filter , because get give object . or update method work on quersets not in object , get method give as objects not querysets . 
+     
+
+10 == 
+
+  update_or_create(default=None , **kwargs) - A convenient method for updating an object with a given keyword asks creating a new one if necessary the default age or dictionary or field valuepayer used to update the object the value in default can be collable.
+
+
+  it returned a tapan of objects ,created where object is the created or update object and create is a boolean specifying whether a new object was created.
+
+
+  the update _or _create method tries to fetch an object from database based on the given kwargs if a match is found it update the field passed in a default dictionary.
+
+
+  example : - 
+
+    student_data = Student.object.update_or_create(id=14 , name=nikit , ,defaults={'name' : 'sameer'})
+
+    default you have to give what value you want to update 
+
+
+11 == 
+'bulk_create(objs , batch_size=None , ignore_conflicts=None )  - the method insert the provide list of objects into the database in an efficient manner. 
+
+the models save() Method will not be called and the pre _save and post _save signal will not be sent . 
+
+it does not work with child models in a multi - table inheritance scenario.
+
+if the models primary key is an auto field it does not retrieve and set the primary key attribute as save() Does unless the database backend support at( current postgre sql) 
+
+It does not work with many-to-many relationships. 
+
+it casts object to a list which fully evaluates objs if its generators the cast allow inspecting all objects so that any object with a manual set primary key can be inserted first. 
+
+the batch_size parameter control how many objects are created in a single query . the default is to crreate all 
+objects in one batch except for SqlLite when the default is such that at most 999 variables per query are used .
+
+
+on database that suppoert it (all but Oracle ) setting the ignore_conflict  to Turn tell the datbase to ignore failure to insert any rows that fail constrant such as dublicate unique value enabling thus parameter disable. setting the primary key on each model .
+
+
+example : - 
+
+
+  obj = {
+     Student(name=name1, email = email , city=city roll = roll ),
+     Student(name=name2 , email = email , city=city roll = roll ),
+     Student(name=name3 , email = email , city=city roll = roll ),
+     Student(name=name4 , email = email , city=city roll = roll ),
+
+  }
+
+
+
+student_data = Student.objects.bulk_create(obj , another parameter is not so much usefull).
+
+
+
+12 === 
+
+  bulk_Update(objs , fields , batch_size=None ) -- Did the given fields on the provided model instance journally with one QuerySet.update() Is used to save the change so this is more efficient than iterating through the list of model and callingsave() on each of them .
+
+  YOu cannot update the model primary key 
+
+
+  Each models() save() methods is not called and pre_save and post_save signals are not sent .
+
+  If updating a large number of columns in a large number of row the as QL generate can be very large avoid this by specifying a suitable batch _size.
+
+  Updating field defying on multi - table inheritance ancestor will incur an extract query per ancestorsif object contain duplicate only the first one is update.
+  
+
+  The bash _size parameter control how many objects are saved in a single query the default is to update all objects in one batch except from Sqlite and Oracle which have restriction on the number of variable used ina query.
+
+  example : - 
+
+
+    all_satudent_data = student.objects,all()
+
+
+    fro stu in all_satudent_data:
+        stu,city = "bhel"
+        student_data = Studet.objects.bull_update(all_satudent_data , ['city'])
+
+
+
+
+13 ====
+
+  in_bulk(id_list=None , field_name='pk') - its take a list of field value id _list and the field _name for those value and return a dictionary mapping is value to an instance of the object with given Field value if ID under score list is not provided all objects in query set are returned field _name must be a unique field and it default to the primary key.
+   
+
+
+   example : - 
+
+    student_data = student.objects.in_bulk([1 , 2 ])
+    printstudent_data([1].name) or [2].name 
+
+
+
+    i think it can use for getting two object at same time .
+
+
+#14 ===  
+
+
+
+ delete() - The delete method convenient is name delete() The method immediately deleted the object and returned the number of objects deleted and dictionary with the number of deletion per object type.
+
+ example : - 
+
+   Delete one record : - 
+
+     stu = student.object.get(pk=2)
+     stu.delete() 
+
+15 ==
+
+you can also delete object in bulk every query set has a delete() Method which delete all members of that query set.
+
+
+
+bulk_delete() 
+
+
+example : - 
+
+  student_data = Student.objects.filter(marks=50) .delte()
+
+16 --  dellete alll record all record 
+
+student_data = student,objects.alll().delete() 
+
+
+16==== 
+
+it returns an integer representing the number of objects in the database matching the query set a count() call performs a COUNT(*) the scene .
+
+
+
+count() 
+read detail in internet not so much usefull.

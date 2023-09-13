@@ -1,0 +1,39 @@
+# redirect views 
+
+django.views.generic.base .RedirectView
+
+It redirect to given u r L
+
+riven URL may contain dictionary - style strain formatting which will be interpolated against the parameter capture in the url because keyword intercondition is always done even if no argument are passed inany"%" character In the U R L must be written"%%" show deck python will convert them to a single% on output.
+
+if the given url is none jango will return an http response gone() 410)
+
+The view inherit methods and attributes from the following:
+
+django.views.generic.base.View 
+
+
+attribute : - 
+
+url - who are you the URL to redirect to as a string or nun to raise a 410 gone HTTP error 
+
+pattern_name : - The name of the url pattern to redirect to reversing will be done using the same arcs and keywords as are passed in for the view.
+Add keyword alks argument or positional and slash or keyboard argument capture from the url pattern: - weather the redirect should be permanent the only difference here is the Sttp status code return true than the redirect will use status code 301 if falls then the redirect will use status code 302default permanent is false.
+
+query_string : - whether to pass along the Aaji et quarry string to the new location if true then the query string is append to the url if falls then the query string is discarded by default query _string is false.
+
+
+
+methods : -
+
+get_redirect_url(*args , **kwargs) : - it constructs the target url for redirection
+
+the args Add keyword alks argument and slash or keyword argument capture from the url pattern respectively .
+
+The default implementation user url as a starting string and perform expansion of percentage named parameters is that string using the name group capture in the url.
+
+if URL is not set Get _redirect _URL() Try to receive the pattern _name using what was captured in the url both named and unnamed group are used.
+
+If requested by query _string it will also append the query string to the generate URL subclasses may implement may behavior deviate as long as method return or redirect - ready url string.
+
+example see in direct code . 

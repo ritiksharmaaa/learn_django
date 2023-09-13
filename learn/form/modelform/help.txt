@@ -1,0 +1,84 @@
+# model form  learning 
+
+we know we have same field in char and form field .
+there is any way to make form data using model .
+
+setup form using modelform 
+
+classs Studentforms(forms.modelform):
+    class Meta :
+      model = user == it a model whic which import 
+      fields = ['name' , 'email' , 'password']
+
+
+      difference in formfield and modelfield-------
+
+      means this field are mostely same but some are diffrent ex - charfield .
+
+
+if in model we write blank=true than require is false .
+The form fields Mabel is set to verbose _name of the model field which the first character capitalized
+The form fields help _tax is set to the help _tax of the model fields
+
+If the model field has choice set then the form fields widget will be the set to selectwith choice coming from the model fields choice the choice will normally include the blank choice which is selected by default if the field is required this force the user to make a selection the blank choice will not be included if the model field hasblank equal to false and an explicit default value the default value will be initially selected instead
+
+
+we can overight any specifiv field when we inherit models.form 
+
+we have to write a pure code just upper the mete code 
+
+
+SAving data in forms data---------------------------
+
+we have to save like that == save(commit=False/True) - this message create and save a database object from the data bound to form .
+
+a subclass of modelform can Accept an exiting model instance as the keyword argument instance , if this is supplied save() will update that instance 
+
+if it's not supplied save() will create a new instance of the specified model 
+
+if th eform has't beeen validate calling save() will do so by checking form.errors 
+if commit = False then it will return an object that has't yet been saved to database . this usefull if you want to do custom processing pn the object before saving it or if you want to use one of the specialized model saving options .
+
+If your model has many to many relation and you specify commit to false when you save a form jango cannot immediately save the form data for the many to many nation this is because it is not possible to save many to many datafor an instance until the instance exists in the database Cortanave
+
+
+
+selecting model form field . ----------------------------------------
+
+selecting all fields = fields =  '__all__'  , exclude = mean which modelform field not to add in form .
+
+
+modelfield -- inhertance , 
+
+
+problem supose we want to make a user a teacher user or student user . so we have problem we have to make a namw emall pass student , teacher model ---
+
+but why we made a whole model form than exclude student and student form to makea two for for student and teacher .
+
+so we use model inhertance .  we  have model like student_name , teacher_name , email , password 
+
+class Studentform(forms.model):
+  class Meta:
+     model = model name 
+     fields = ['student_name' , 'email' , 'password' ]
+
+class teacherform(Studentform):
+    class Meta(student.meta):
+      fields - ['teacher_name' , 'email' , 'password']
+
+
+
+------------------------
+
+
+Normal python name resolution rule apply if you have multiple base classes that declare a metainner class only the first one will be used this means the child's meta if it exists otherwise the meta of the 1st parent etc.
+
+It's possible to inherit from both firm and model form simultaneously however you must ensure that the model from up here first in the mro this is because these classes rely on different meta classes and a class can only have one metar class. 
+
+It's possible to declare a remove of fields inherit from parent class by setting the name to the nun on the subclass.
+
+
+
+
+ 
+       

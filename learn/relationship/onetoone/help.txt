@@ -1,0 +1,125 @@
+# one to one realtionship models 
+
+Django offers way to define the three most common type of database realtionship
+
+fast one to one relationship or
+ many to one relationship or
+  many to manage relationship
+
+
+  one to on realtionship -- 
+
+
+   When one row of table a can be linked to one row of table b.
+
+   ex - 
+
+     one user - create - only one pages . like faceboook we can user acount we can also make pages .
+
+-------------
+
+One to one relationship - to define a 1 tour relationship use one to 1 field you use it just like any other field type by including it as a class attribute of your modelone to one field require a positional argument the class to which the model is related.
+
+
+ex - 
+
+  OneToOneFields(to , on_delete , parent_link , **options )
+
+
+where -- 
+
+
+to = The class two which the model is related
+
+on_delete = when an object reference by a foreign key is deleted Django will emulate the behavior of the sequel constraint specify by the on _delete argument on _delete does not create an SQL constraint in the database.
+
+parent_link = When true and used in model which inherit from another concrete model indicates that the field should be used as the link back to the parent class rather than the extra 1 to 1 field which would normally be implicitly create by subclassing.
+
+limit_choices_to = Set a limit to the available choice for this field when the field is rendered using a model form or the admin (by default all objects in the query set are available to choose.)- Either a dictionary a Q  object or callable returning a dictionary or Q  object can be used
+
+   ex - we can set this staff user can only create page ya super user . or we can make diffrent type of user .
+
+related_name = this name to use for the relations from the related object back to this one it also the default value for related _query _name the name to use for the reverse filter name from the target model.  ---- we can use it to manuto majy relationship . 
+
+If you did prefer Django not to create a backward relation set relation _name to "+" or and it width '+'
+
+related_query_name = The name to use for the reverse filter name from the target model its default to the value of related _name or Default _related _name if sat otherwise it default to the name of the modelone
+
+
+to_field = the field on the related object that the relation is to by default django use the primary key of the related object if you reference a different field that field must have unique equal to true.----
+
+db_constraint = control whether or not a constraint should be created in the database for the foreign key the default is true and that almost certain what you want setting these to false can be very bad for data integritythat's sad here are some scenario where you might want to do this.
+
+You have legacy data that is not valid.
+
+You're sharding your database.
+
+If this is set to false accessing a related object that does not exist will raise it does not exist exception.
+
+
+
+
+----------------
+
+
+on_delete ---
+
+  on_delete - Maran object reference by a foreign key is related django will emulate the behavior of the sql constraint is specified by the on _delete argument on _delete does not create an SQL constraint in the database 
+  
+  - the possible value for on _delete are found in Django Db Dot models:---
+
+
+  - CASCADE - cascade delete Django emulate the behavior of the SQL constraint ON DELETE CASEADE and also delete the object containing the foreign key.
+
+  - PROTECT - prevent deletion of the reference object by raising protection r earth a subclass of Django.Db.integrity error
+
+  SET_NULL - Set the foreign key null this is only possible if null is true. 
+
+  SET_DEFAULT - Set the foreign key to its default value a default for the foreign key must be set.
+
+  SET() - Set the foreign key to the value past to SET() or if a collable is passed in the result of calling it.
+
+  DO_NOTHING - Take no action if you database back end enforce referential integrity this will cause an integrity error unless you manually add on sqloandelette constraint 2 database field.
+
+
+  NOTE : 0- 
+  In one to one field you don't use set null set default set do nothing it's only efficient to use cascade or protect.
+
+
+  example : - 
+
+    class USER (models.Model):
+    usernme = fidld 
+    passord = fields 
+
+    class page (models.Model):
+         user = models.OneToOneField(USER, on_delete=CASCADE)
+         page_name = chare 
+         page_cat = fielf 
+         page_publushing_date = date field 
+
+
+note :- 
+
+is user delte it pages is automatically delete but if page delte user not delte ;
+
+
+here is solution to do that we use signals 
+
+
+
+------------------------one models like with inherit pages --------------------
+
+here id is make relationship with page - name like - page_ptr_id -- it not goods .
+
+to change copy whole user field from page where retationship buid pasete it and give whatever you want to makee name 
+
+
+see in code base .
+
+
+
+
+
+
+

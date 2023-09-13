@@ -1,0 +1,4 @@
+# this is file base dsession so we have to change the session backend in setting .py 
+
+SESSION_ENGINE = 'django.contrib.session.backends.file'
+SESSION_FILE_PATH = os.path.join(BASE_DIR, 'session)

@@ -1,0 +1,157 @@
+model inheritance in Django work almost identically to the way normal class inheritance work in python the base class should subclass django.db.models.model
+
+
+we see three type of model inhertance .
+
+Abstract Base Classes
+Multi-tabel inhertance 
+Proxy-models
+
+
+Abstraction Base Classes --------------------------------------------------------------------------------------
+
+  Abstract base  classes are useful when you want to put some common information into a number of other model.
+  
+  you You write your base class and put abstract equal to in the meta class.
+
+  The model will then not be used to create any database table instead when it is used as a base class for other model its failed will be added to those of the child class.
+
+  it does not generate a database table or have a manager and cannot be instantiated or safe directly.
+
+
+
+example : - 
+
+drom django.db import models 
+
+ class ComandInfo(models.model):
+     name = models.CharField(max_length=70)
+     age  = models.CharField(max_length=70)
+     class Meta: # until you not write meta = abstract = true it make databse table .
+
+     abstract=True 
+
+class Studentifo(CommanInfo):
+    fee = models.CharField(max_length=70)
+    # here automatic meta is abstract=false it ineherit .
+
+
+class TeacherInfo(CommanInfo):
+    salary = models.integerField()
+
+
+
+Meta inheritance - When an abstract base class is created Django make any meta inner class you declare in the base class available as an attribute.
+
+if a child class does not declare its own meta class it will inherit the parents' meta.
+
+If the child wants to extend the parents' metaclass it can subclass it.
+
+django does make one adjustment to the meta class of an abstract base class before installing the meta attribute its set abstract equal false.
+
+This means that children of abstract base class dont automatically become abstract class themselves.
+
+You can make an abstract base class dead inherit from another abstract base class you just need to remember to explicitly setabstract equal true each time .
+
+
+Some realtionship related setting -------------
+
+When you are using related _name or related _query _name is an abstract base class only part of the value should contain '%(app_label)s' , and '%(class)s'
+
+'%(class)s' Is replaced by the lower caged name of the child class that the field is used in.
+
+"%(app_label)s" Is replaced by the lower case name of the app the child class is contained within each install application name must be unique and the model class name with each app must also be unique therefore the results name will end up being different.
+
+example : - 
+
+ from django.db import models 
+
+ class Base(models.Model):
+     m2m = models.ManyToManyField (otehrModls , realted_name='%(app_label)s_%(class)s_related') , related_query_name="%(app_label)s_%(class)ss",
+
+     class Meta:
+     abstract =True
+
+
+------------------------------multi-table-inheritance ------------------------------------
+
+in this inhertance each models have theire own database table , which means base class and child class will have theire own table.
+
+the inhertacnce relationship introdeucce links between the child models and each of its parents (via an automatically - created OneToOneField).
+
+----------example -- 
+
+class examcenter(models):
+    field 
+
+ class student(examcenter):
+    fields 
+
+all os rthe fields ox examcenter will also be available in student although the data will reside in a different database tabel . 
+
+
+-------------------------proxy model -----------------------
+
+
+sometimes however you only want to change the python behaviour of a model - perhaps to change the default manager or add a new methods .
+
+
+this is not dublicate but this is say a orginal and a proxy . NOTE - my openion .
+
+
+This is what proxy model inheritance is for creating a proxy for the original model you can create delete and update instance of the proxy model and all that data will be saved as if you were using the originalnon proxyized model the difference is that you can change thing like the default model ordering of the default manager in the proxy without having to after the original.
+
+
+Proxy model are declared like normal models you tell Django that its proxy model by setting the proxy attribute of the meta class to true.
+
+
+xample : - 
+
+ from django.db imports models 
+
+class Examcenter(models.Model):
+    cname = charfield 
+    city = charifelds
+
+
+class MyExamcenter(Exampcenter):
+    class Meta :
+        proxy = True 
+        orderning = ['city']
+        def do_somethings(self):
+           pass 
+
+
+
+or --------------------------
+
+ object =  NewManager()
+ class Meta:
+     proxy = True 
+
+
+
+
+------------------
+
+proxy is just like copy of you table but only one table made - and perform so many operation in proxy tables . NOTE - myopenion 
+
+
+
+aproxy model must inherit from exactly one non - abstract model class.
+
+You cant inherit from multiple non - abstract model as the proxy model does not provide any connection between the row in the different database table.
+
+A proxy model can inherit from any number of abstract model classes providing they do not define any model fields.
+
+A proxy model may also inherit from any number of proxy model that shared a common non - abstract parent classes.
+
+If you don't specify any model manager on a proxy model it inherit the manager from its model parents .
+
+If you define a manager on the proxy model it will become the default although any manager defined on the parent classes will still be available.
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+in this file we learn about get and post methods 
+
+=============
+
+GET = use only for request that do not affect the state od the system 
+POST = who change the system state 
+GET = is not for suitable for password other wise it show in search area in browser 
+GETY i salso insutable for large quantity of data or for binary dat such as image . a web request that uses get request for admin forms is a security risk : it can be easy for an attacker to mimic ' request to gain to sensitive parts of the system .
+POST couple with other protecction like Django CSRF protection offers more control over access .
+
+GET , bny contrast bundles the summied dat into string and use this to compose a url . the url conatin the address where the sata must be sent as well as the data keys and values ,
+Django login form is returned using  the POST method in which the browser bundles up the form data encode it for transission Send it to the server and receive back its response 
+
+Get it suitable for things like web search form because you are in that respect but that requires can easily be bookmarked or re submitted
+
+
+what if cross side request forgery  ==  csrf / xsrf it basicall provide decurity to not hacker hack your account via link display on search url 
+

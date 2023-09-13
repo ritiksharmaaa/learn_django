@@ -1,0 +1,45 @@
+list view with default template and context ------------
+
+in views .py 
+
+  from django.views.geeneric.list import LstView 
+  import model 
+  class student list view(listview):
+       model = studen  -- this mean studen.object,all() is already happen 
+
+urls.py 
+
+simpley  define url .as_view()
+
+default Template 
+
+synatx : - apppname/modelclassname_list.html
+ex = school/student_list.html hear _list is suffic we can aslo change it . 
+
+
+default context : - 
+
+  synatx : - modelclassname_list 
+  example - student_list
+  we can also use object_list 
+
+
+  define a own custom name for html and also for context --- 
+
+------------listview with custom template and contect ---------------
+
+views.py 
+
+from django.views.generic.list import ListView 
+import model 
+
+class StudentListView(ListView):
+     model = student 
+     tempalte_name = 'school/student.html'   # custom template name 
+     context_object_name = 'student'          # custom context name 
+
+
+url patters same , 
+
+here both custom as well defualt template and context work . 
+

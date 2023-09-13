@@ -1,0 +1,276 @@
+login view : - 
+
+registration/login.html
+
+These templates get past four template context variable . 
+
+form : for authentication 
+
+next : the url for redirect 
+
+site : - the current site according to SITE _ID settings if you don't have the size framework installed this will be sent to instance of request site which derived the site's name and domain from the current http request.
+
+site_name : - ann Elias 4site.name if you don't have the site framework installed this will be set to the value request dot MettA['SERVER_NAME'],
+
+
+custom Template : - 
+
+write url 
+
+path('login/' views.LoginView.as_view(template_name='myapp/login.html') , name='login')
+
+attribute in login view : - 
+
+ template_name - 
+
+ redirect_field_name 
+
+ authentication_form = a callable (typically a form class) to use for authentication . default to authenticationForm 
+
+ extra_context - dictnary 
+
+ redirect_authenticate_user = A boolean That control weather or not authenticated user accessing the login page will be redirected as if they had just successfully logged in default to false.
+
+ success_url_allowed_host : - A set of hosts in addition to request dot get _host() data C4 redirecting after login default to an empty set.
+
+
+
+ -----------------logout ----- 
+
+ from django.contrib.auth.views import LogoutView 
+
+ template_name = 'registeration/loged_out.html'
+
+path('logout/' , views.LogoutView.as_view() , name='logout')
+
+logged_out.html - These temperatures already provided which is used by admin logout template file.
+
+You can create your own custom logger template by default by defining template and _name attributes.
+
+
+
+attribute : -
+
+ title : Logged out , localized 
+
+ site : The current side according to the site _ID setting if you dont have the side framework installed this will set to an instance of required size which derived the site's name and domain from the current http response.
+
+ site_name : an Elias 4 side dot name if you don't have site framework install this will be set to the value of request dot meta server site_name
+
+ custom template : - 
+
+ [path('logout/' , views.LogoutView.as_view(template_name="myapp/logout.html") , name="logout")]
+
+
+ attribte : - 
+
+ next_page : The u r l to redirect to after logout default to setting dot logout _redirect _U R l
+
+ template_name : the full name of template to display after logging the user out default to registration slash log _outdoors html
+
+ redirect_field_name :
+
+ extra_context : 
+
+ success_url_allowed_host :
+
+
+
+ -----------------------password-changeview ----------------------
+
+ template_name : password_change_form.html
+
+ path('password_change/' , views.PasswordChangeView.as_view() , name="password_change") # giving templatename 0node as_view()
+
+
+ registration/password_change_form.html
+
+ costom : - 
+
+ context : 
+
+attinute : 
+
+template_name : 
+
+success_url : deau;t - password_change_done 
+
+form_class : custom changet form which from which ACCEPT A USER keyword argument . the form is responsible for actually changing the user password default to PasswordChageForm . 
+
+
+
+extra_context : dict 
+
+
+
+------------------------password_change_done ---------
+
+passwordChageDoneView 
+
+template_name = reg/password_change_done.html
+
+path : same as previout  also chage template name inside as_view . 
+
+attribute  - 
+
+template_name :
+
+extra_context :
+
+
+--------------------passwordResetview 
+
+PasswordResetView 
+
+template_name : defUlt - registeration/password_reset_form.html
+
+cutom template same give template name inside as_view ()
+
+
+
+This email template cat passed following email template contacts variable.
+
+email : an alias user.email 
+
+user : the current user dot according to the email form failed only active user are able to reset their password user is _activist true.
+
+site_name : An alias foresight dot name if you don't have site framework installed this will be sent to the value of request dot Amitya a server _name for more on site see the site frameworks.
+
+domain : Ann Elias foresight.domain if you don't have the site framework installed this will be set to the value of request dot get _host()
+
+protocol : http or https 
+
+uid : The user primary key encoded in base 64
+
+tocken Token to check that reset link is valid. 
+
+
+attribute : - 
+
+template_name
+
+form_class
+
+email_template_name  : The full name of a template to use for generating the email with the reset password link default to registration lads password reset _email.html if not supplied.
+
+subject_template_name : The full name of a template to use for the subject of the email with the reset password link default to registration slash password _reset _subject dogs TXT if not supplied.
+
+tocken_generator : Instance of the class to check the one time link this will default to Jango Dot Contributor tokens dot password reset token generator.
+
+success_url :
+
+form_email : avenged E mail address by default jango used the DEFAULT _FROM _email
+
+extra_context 
+
+html_email_templste_name : The full name of a template to use for generating a tax html multi part mail with the password reset link by default html email is not sent.
+
+extra_email_context : A dictionary of context data that will be available in the email template it can be used to override default template contacts value listed below example domain
+
+
+
+password receipt done shona
+
+
+
+------------------------------passwordresetdone view ----------------------------------
+
+
+PasswordResetDoneView 
+
+The page show after a user has been emailed linked to reset their password this view is called by default if the password reset due does not have an explicitly success _urlset.
+
+ if the email address provide does not exist in the system the user is inactive or has an unusual password the user will still be redirect to the view but not email be sent.
+
+default : 
+template_name : password_reset_done.html
+
+path as normal used in view  # give custom template for rendered . 
+
+attrinite : 
+
+template_name
+extra_context 
+
+
+
+---------------------passwordResetConfirmView -----------------------------
+
+passwordResetConfirmView
+
+it present a form for entering a new password . 
+
+keyworda argumrnt from the url field 
+
+- uidb64 - the user id is ecoded in base 64 . 
+
+tockent : - Gokul to check that the password is valid
+
+template_name defaut - password_reset_confirm.html
+
+path('reset/<uidn64>/<tocken>/' , view.passwordResetConfirmView.as_view() , password_reset_confirm)
+\
+
+
+context pass in therre html 
+
+form : the farm for setting the new user,
+
+validlink : bullion true if the link combination of UIDB 6 4 and token is valid or unusual yet.
+
+
+attribute : - 
+
+template_name
+
+tocken_generator
+
+post_reset_login : A bullion indicating if the user should be automatically authenticated after the successful password reset default to false
+
+post_reset_login_backend :Adopted pats to the authenticated back end to use when authentication user if post _reset _login is to required only if yo.
+
+u have multiple authentications _backendsdefault to none
+
+form_class
+
+success_url
+
+default : password_reset_complete
+
+
+extra_context 
+
+reset_url_tocken : Token parameter display as a component of password reset url default to set - password.
+
+
+
+
+------------------------password_reset_completeview . 
+
+PasswordResetCompleteView 
+
+At present a view which informs the user that the password has been successfully changed.
+
+defaut template : password_reset_complete.html 
+
+path : as normal path 
+
+
+
+
+built in form ----------------------------
+
+Admin password change form- A firm used in admin interface to change user password it takes the user as the first positional argument.
+
+authentication form I user in its take request as its first positional argument which is stored on the firm instance for use by sub - classes
+
+password change form- a farm for allowing a user to change their password.
+
+Password reset form  - a form for generating an emailing a 1 otp use link to reset a user password.
+
+Set password form  - A form that let us user change their password without entering the old password. 
+
+User change form -  a form used in admin interface to change a user information and permission.
+
+User creation firm a model firm for creating a new User
+

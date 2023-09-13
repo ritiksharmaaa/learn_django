@@ -1,0 +1,70 @@
+permission and authorization 
+
+Who comes with built in permission system it provides a way to assign permission to specify user and group of useramd group of  user .
+
+   django admin site used permissions as follow:
+
+   access to view objects is limited to user with the views or change permission for that type of objects
+
+   access to view the ad form and add an object is limited to user with the ad permission for the type of object.
+
+   Taxis to view the change list view the change from and change an object is limited to user with change permission for that type of objects
+
+   Access to delete an object is limited to user with the delete permission for that type of object.
+
+   how to give permission to user .-------------------
+
+   myuser.groups.set([grouplist])
+   myuser.groups.add(group , group ,)
+   myuser.groups.remove(group , group, )
+   myuser.groups.clear()
+   myuser.user_permissions.set([permissionlist])
+   myuser.user_permissions.add(permission ,permission)
+   myuser.user_permissions.remove(permission)
+   myuser.user_permissions.clear()
+
+
+
+When a model is created automatically create four default permission for the following action . 
+
+  
+   add: User with the permission can add an instance of the model
+   delete:: user with the permission Can delete an instance of murder
+   : user with the permission Can update  an instance of murder
+   view : user with the permission Can view  an instance of 
+   
+   Permission name follow a very specific naming convention appname.action_mordelname
+   example enroll.delete_blog 
+
+
+perm template variable ========================
+
+The current login user permission are stored in a template variable {{perms}} this is an instance of dJango.contrib.auth.context__processor.PermWrapper ,  which is template - friendly proxy of permission
+
+example . =
+
+suppose we have a user which don't have any permission to delete anything but as we noted in our template we are given a delete button and it is showing so many users but but these quarms syntax we can restrict the user if the user is permission to delete the things than the battle of delete show. 
+
+if perms.enroll.delete_blog 
+if perms.enroll 
+
+permtemplatesvariable . ---------------------------  
+
+Loged-in users permission are stored in template variable {{ perms }} This is an instance of Django.context_processor paramra wrapperwhich is template friendly friendly proxy permission . 
+
+ if perms.enroll.delete_blog 
+ than show delete button else you have not any permissions . 
+
+ when you see a subscription model ther e group permision can use to access paticular action .
+
+ supose we have to user ==
+
+ normal or pro or premium .  
+
+ so we make group of access to each type of user and gave this group permisons at the time of login and also after some fees we can give hem this permision and delete permison after time is over . 
+
+ let look how to give group permision via code . 
+
+
+
+

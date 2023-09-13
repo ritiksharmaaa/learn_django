@@ -1,0 +1,134 @@
+UserCreationForm  
+
+userobject fields .
+
+username  - it contain alphanumeric , _ @ + and - charaters are require . it require and length is 150 charters or fewer .
+
+first_name = blank=True length 30 char .
+
+last_name = blank=True  and length is 150 char .
+
+email = blank=True 
+
+password - a hash and metadata about the password , Django does't store the raw password its require .
+
+group = many to many relatioship to group .
+
+user_permissions  = manytomany realationship . 
+
+is_staff = mean user assec admin pannel or not . it take Boolean Fields . 
+
+is_active = Designated weather this user account should be considered active we recommend that you set this flag to falls instead of deleting account that's way if your application have any foreign key to user the foreign key won't break its  s take boolean . 
+
+is_superuser - mean give all admin access . 
+
+last_login = datatime os user last login 
+
+date_joined  = when this account were created . 
+
+
+
+is_authenticated = This is a way to tell if the user has been authenticated this does not imply any provision and does not check if the user is active or has a valid session its read only attribute which is always true. 
+
+
+
+
+some buit in method to specfic rendering field . 
+ mean you dont need to write this . form.username , first_name , last_name . so we can use from function to use it .
+
+
+get_username()
+
+get_full_name()
+
+get_short_name()
+
+set_password(raw_password) = it set the user password to give raw string raw string . taking care o fthe passsword_hassing . does't save the user object .
+
+when the raw_password = None th epassword wills set to an unusable password , as if set_unusable_password() were used . 
+
+set_unuasble_password() = It marks the user as having no password set this is not the same as having a blank string for a passwordcheck_password()  for this user will never return true does not save the user object
+
+You may need this if authentication for your applications take place against an existing external source such as an LDAP directory 
+
+
+has_unusable_password() =  it return fasle if set_usable_password() is called fro this user .
+
+get_user_permissions(obj=None) =  it return a set od permission string thaT THE USER HAS DIRECTLY , it obj is passed in only return the user permission for this specfic object . 
+
+
+get_group_permissions(obj=None) = it return a set of permission string that the user through theire groups 
+
+get_all_permissions(obj=None ) It's returning setup permission strings that the user has bought through group and user user_permissions
+
+if If of O B J is passed in only written the permission for the specific objects
+
+has_perm(perm , obj=NOne) =========== its return true if the user has the specific permission where Param is in the format '<app label>' '< permission codename>' if the user is inactive this method will always return false for an active super user this matter will always return true
+
+If O B J is passed in the method Warnock check for a permission for the murder but for this specific objects
+
+has_module_perms(packages_name) ==============- its return true if the user has any permission in the given package the Django app label if the user is inactive this method will always return false for an active super user this method will always return True
+
+email_user(subject , message from_email=none , **kwargs) ========= It sends an email to the userif from _email is none jango use the default from email any star keyword arcs are passed to the underlying send mail() call 
+
+
+
+
+
+
+UserManager methods ======================
+
+The user model has a custom manager that has a following help for method (in addition to the method Provided by 
+
+BaseUserManager) . 
+
+
+
+create_user(usernasme, email=None , password=None , **extra_fields) -- Create save and return an  user
+
+the username and password are set as given the domain portion of email is automatically converted to lower case and the return user object will have is _active set to true.
+If no password is provided that _unusable _password() will be called
+
+create_superuser(username , email=None , password=None , **extra_fields) == It is same as create_ superuser() but set  is_staff and is_superuser to true.
+create_user(), it set is_staff is true .
+
+with_perm(perm , is_active=True , include=True , bakend=None , obj=None ) = Its returnuser that has the given permission parameter in the aap label permission code name format or a permission instance return and ampetic query said if no user who have the perm found
+
+if is_active is true Return only active user or if false return only inactive user use none to return all user irrespective or active state
+
+if include_superusers is true default the result would include super user_permissions
+
+
+If backend is passed in and it defined in authentication _backend then this method will use it otherwise it will use the back end in authentication _backend if there is only one or raise an exception
+
+
+
+Group Object fields =====================
+
+naem = Any character permitted it is required and length is 150 character or fewer
+
+ example Amazon user
+
+permission manay-to-many field permission . 
+
+
+
+permission object fields ============================
+
+name = it is required  a requirement is 255 character of your example can vote . 
+
+content_type = A reference to the jango _contest on school type database table which contain a record for each installed module it is required
+
+Code name - it is requiring length is 100 character or fewer example' can _vote'
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,257 @@
+# learning query set api . method that return new querset . 
+
+file name school . 
+
+-------- 
+query  set can be defined as a list of  containing all those objects we have created using the Jango model.
+
+query set  allow you to read the data from the database filter it and order it . --- 
+
+--- you can  perform so  many operation in sql we can also do using querysetapi . 
+you dont need to raw sql code to doing operation .
+-------------------------
+
+query property ====  this property is used to get sql query of query set.  (we can use this things just for production .)
+
+syntax : - queryset.query (print in terminal to use it . )
+
+
+
+--------------------------------------Methods that return new query sets ------------------------------------
+
+RETERVING ALL OBJECT  --
+  
+   all() - This method is used to retrieve all objects this return a copy of current query set.
+
+   example = 
+
+       student.objects.all() 
+
+2 == 
+
+RETERVING specific object s- :
+
+   filter(**kwargs) - Containing object that match the given lookup parameters dot filters() Will always give you a query set even if one a single object match the query .
+
+    example -- 
+
+       student.object.filter(mark=70 )
+
+
+3 ===
+
+ exclude() - It return new query sad containing object that do not match the given lookup parameter.
+
+   example --
+
+      student.objects.exclude(marks=345)
+
+4 == 
+
+order_by() - Orders the fields
+
+  two or three  method ; 
+    
+     asec and desec order 
+     
+     ex = mark = asc 
+     ex = -mark = desc
+     ex - '?' give random structure . 
+
+     this type they can arrange it data .
+
+
+5 == 
+
+  reverse() - This work only when there is ordering in queries at.
+
+
+  exampke == 
+
+
+     student.object.order_by('mark').reverse()
+
+6 == 
+
+   values(*field , **expression ) - Its return queryset d that return dictionary rather than model instance when used as an iterable each of those dictionaries represent an object with the keys corresponding to the attribute name of model object.
+
+   normal it give all model data into onject rather tham a list .
+
+   without parameter it give all data . 
+   with parameter the field you write only they can show if write name . so only name show all other should be blank.
+    exampke = 
+
+      student.object.values('name' , 'roll') the field id eriten only show not other data have been show 
+
+
+
+7 ====
+
+
+  distinct(*fields) - these eliminate duplicate rows  from query result
+
+  example ---
+
+    we can not see exampke becuse our model i have unique == true so we dont have dyblicate data . 
+
+
+8 ===
+
+ values_list(*fields , flat=True , named=False)   - This is similar to values() Expect that instead of returning dictionary it returns tupple when iterated over . 
+
+    - If you dont pass any value to values _list() it will return the fields in the model in the order they were declared
+    - if you only pass in single field you can also pass in the flat parameter if true this will means the return result are single values rather than one-tupple 
+    - you can pass named X is equal to true to get result as namedtuppled
+
+
+    named = True = mean data can see in template after making named= true otherwise its not works.
+ example == 
+     
+9 ===
+
+  using(alias) -- this method is for controlling which database the query set will be evaluate against if you are using more than one databasethe only argument these method take is to alliance of a database as define in DATABASE .
+
+   use this method when we use more than one database . 
+
+   example = Student_data = student.objects.usings('default) 
+
+   
+
+
+
+10 == 
+
+  dates(fiels , kind , order='ASCS) - it return a query said that evaluation to a list of date objects representing all available dates of a particular kind within the content of the query set.
+
+
+
+  fields - It should be the name of a date field of your model
+
+  kind - It should be either year month week or days .
+
+
+
+  year = return a list of all distinct year values for the fields
+
+  month- return Return a list of all distinct/month   value for the field .
+
+  week - Return a list of all distinct year weak value for the fields all data will be a Monday.
+
+  day = Return a list of all distinct years month slash day value for the fields
+
+  order = it should be either ASC or DESC these specifies how to order the result default to ASC.
+
+
+  Each datetime.date object in the result list i s-'truntcate' to the given type . 
+
+
+
+
+
+11 === 
+
+note - we dont have not currenty a datime model so we can see it practicel .
+
+ datetime(field_name , kind , order=Asc , tzinfo=None)  - Did return a query set that you'll wait 2 or list of daytime.daytime object represent all available dates of a particular kind within the content of the query set.
+
+ field_name =  it should be the name of daytime fields of your model
+
+ kind - same as previous you have same as it here also . 
+
+ tzinfo = 80 define the time zone to which day times are converted prior to truncation n these parameter must be daytime.tzinfo  object if its none django used the current time zone it has no effectwhen USE _TZ is false.
+
+
+
+12 == 
+
+none() - calling none() will create a query said that never return any object and no query will be executed when accessing the result qs.none() Very sad is a instance of EmptyQuerySet 
+
+x\example - 
+
+  student_data = Student.object.none() 
+
+
+
+13 Union =====
+
+union(*other_qs , all+False)- use SQLUNION operator to combine the result of two or more queries at the UNION operators select  only distinct value by default to allow duplicate value use the all = true 
+
+example - 
+
+
+    qs1 = School.objects.values_list('id' , 'name' , named=True)
+    qs2 = Teacher.objects.values_list('id' , 'name' , named=True)
+
+  student_data=qs2.union(qs1 , all=False ) you can add more thean one qr_et just write by , like this . 
+
+14 == intersection 
+
+
+ intersection(*other_qs) - User SQL - I n T E R S E C T operator to return the shared element of two or more queries set. 
+
+
+  
+    qs1 = School.objects.values_list('id' , 'name' , named=True)
+    qs2 = Teacher.objects.values_list('id' , 'name' , named=True)
+
+  student_data=qs2.intersection(qs1 , all=False ) 
+
+  it return all value which present in both queryset . 1 = 12345 2 = 345678 final output is 345 becaue this is same in both 1 and 2 queries. 
+
+15 ==== difference
+
+difference(*other_qs) - uses sql Except Operator to keep only helmet present in the query set but not in some other query set. 
+
+
+   
+
+
+=============================methods that not use much more ========================
+
+some o f this use for optemization .
+
+
+
+
+select_related(*fields)
+
+defer(*fields)
+
+only(*fields)
+
+prefetch_related(*lookup)
+
+extra(select=None , where=None , params=None , table=None , order_by=None , select_parms=None)
+select_for_update(nowait=False , skip_locked=False , of=())
+
+raw(raw_query , parms=None , tranction=None )
+
+annotate(*args , **kwargs )
+
+
+
+Operators that return new Querysets ===============================================================
+
+And(&) - Mind you very set using the SQLA and B Operator
+
+ example - 
+
+   student.objects.filter(id=3)& student.object.filter(roll=106) or 
+   student.objects.fileter(id=3 , roll=104 )
+
+student.object.filter(Q(id=6)&Q(roll=106))
+
+
+
+or =========== combine two parishes using the SQLOR operator
+
+
+example student.objects.filter(id=11) | student.object.filter(roll=111)  or 
+
+student.object.filter(Q(id=11) | Q(roll=106))  you have to import q to use it 
+
+
+
+
+
+

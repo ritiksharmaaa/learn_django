@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color : black  ;
+            color : seashell ;
+        }
+
+
+    </style>
+    <h1> i am django templates laguage lesson</h1>
+    <h3> my  name is {{name}}. and project duration is {{duration}} . we have only {{seats}} seats  . please grab soon as possible . </h3>
+
+    <h2> filter on variable ---------------------------------------------------------------- </h2>
+    <h4>  capfirst - {{name | capfirst }}</h4>
+    <h4> default -  {{bool | default:'Nothing ! ' }}</h4>
+    <h4> length of name - {{name | length }}</h4>
+    <h4>lower case -  {{name | lower }}</h4>
+    <h4>  name slice -  {{name | slice:'2'}}</h4>
+    <h4> name Trauncatechars -  {{name |truncatechars:'3'}}</h4>
+    <h4>new name trauncatewords - {{newname|truncatewords:2 }}</h4>
+    <h4> {{name}}</h4>
+    <h4> {{name}}</h4>
+    <h4> {{name}}</h4>
+    <h1> Working with Date time Fields </h1>
+    <h5>{{datetime}}</h5>
+
+
+</body>
+</html>

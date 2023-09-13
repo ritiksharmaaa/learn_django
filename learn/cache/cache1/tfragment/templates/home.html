@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load cache  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> i am cache 1 page and i am workinh </h1>
+    <h4> corse 1 </h4>
+    <h4> corse 2</h4>
+    {% cache 30 course  %}
+    <h4> corse 3 </h4>
+    <h4> corse 4 </h4>
+    {% endcache course %}
+    <h4> corse 5</h4>
+</body>
+</html>

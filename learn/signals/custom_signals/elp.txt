@@ -1,0 +1,26 @@
+# making cutom signals and how can we use . 
+
+all signals are django.dispatch.Sognals instance 
+
+class Signal(providing_args=list):
+the providing_args Is a list of names of argument the signal will provide to listener this is purely documentationals however as they are raised nothing that check dad signal actually provides these arguments to its listener.
+
+you are allowed to change this list of argument at any time . 
+
+how send ---signal :  
+
+  there are two way to send signals in django . 
+
+    Signals.send(sender  , **kwargs) - this is used to send signal all built - in signals use these two sand signals you must provide the sender argument which is a class most of the time and many provideas many other keyword argument as you like it return a list of double payer[(reciver , response), ...] ,Representing the list of gold receiver function and these respons values.
+
+    -- Signlal.send_robust(sender , **kwargs) - This is used to send a signal you must provide the sender argument which is a class vote of the time and may provide as many other keyword argument as you like a return list of the pay[(reciver , respond ),...] Representingthe list of called receiver function and they are responsiblevalue 
+
+   
+   diffrence between send , robust : ---- 
+
+
+      send() does Not catch any exception released by receivers it simply allow others to propagatedoes not all receiver may be notify of a signal in face of an error.
+
+      send_robust() - Catches all the other derived from python expression class and insure all receiver are notified of the single if NRR occurred the error instance is written in the couple prayer for the receiver that raised the errors.
+
+      

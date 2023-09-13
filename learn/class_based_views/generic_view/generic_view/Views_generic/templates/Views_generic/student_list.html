@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student data </title>
+</head>
+<body>
+    <h3> i am default list view </h3>
+    {% for student in student_list  %}
+   <h1> id - {{student.id}} : 
+    name - {{student.name}} : 
+    roll - {{student.roll}} : 
+    course  - {{student.course}}</h1>
+
+
+        
+    {% endfor %}
+        
+</body>
+</html>

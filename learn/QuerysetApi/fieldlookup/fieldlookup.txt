@@ -1,0 +1,174 @@
+# we we learn aboud field lookup : - 
+
+what we learn we inchance it . 
+
+field lookup are how you specify the meet of an SQL WHERE clause .  
+
+if you to that type of fuction in django so we use fieldlookup . 
+
+they are specified as the keyword to the Queryset methods filter() exclude() , and get() 
+
+
+if you pass an invalid keywords argument a lookup fuction will raise TypeError .
+
+syntax = 
+
+ field_lookuptype=value 
+
+ example : --------------------------------------------------------------
+
+   student.objetcs.filter(marks__lt='50')  - lt mean less than : - this lt is lookup type . and marks is models 
+
+   SQL CODE :--  SELECT *FROM myapp_student WHERE marks < '50' --- raw code of sql 
+
+   the field specified in a lookup has to be the name of a model fields .
+
+
+In case of foreign key you can specify the field name suffixed with _ID in this case the value parameter is expected to contain the raw value of the foreign models  primary key.
+
+see when learn models realtionship 
+
+example : - 
+
+  student.objects.filter(stu_id=10)
+
+
+  ---------------------------------------------some fieldlookup ---------------------------------------------------------
+
+
+  1 - exact - Exact match if the value provided for comparsion is None it will be interpreted as an SQL Null this is case senstive .
+
+  example : - 
+
+    student.objects.get(name__exact='sonam')
+
+2 - iexact - exact match . if the value provided for comparision is NOne . it will be interpreted as an SQL NULL this is cas insensitive .
+
+  example  : - 
+
+     student.objects.get(name__iexact="nikita murari")
+
+
+3 - contain - case sensetive containement test .
+
+  example : - 
+
+     student.objects.get(name__contains='Kumar')
+
+
+4 - iconatin - case insensitive containement test 
+
+   example : - 
+
+      student.objects.get(name__icontains='kumar')
+
+
+
+5 - in - in a given iterable : often a list , tuple , or queryset . it 's not a common use case but strings (beign iterable) are accepted.
+
+
+  example : - 
+
+    student.objects.filter(id_in=[1 , 5, 7])
+
+
+6 - gt - greater than 
+
+example : - 
+
+   student.object.filter(marks__gt=50)
+
+7 - gte - greater than and equal to 
+
+8 - lt - less than 
+
+9 - lte - less than equal to 
+
+10 - startwith - case-sensetive startwith
+
+11 - istartwith - case - insesetive 
+
+12 - endwith - case-senstive ends-with 
+
+
+13 -  iendwith - case-sensetive ends-with 
+
+14 - range - range test(inclusive).
+
+    example : - student.objects.filter(date__range('date 1 ' , 'date 10 '))
+
+    # where date between 1 and 2 
+
+
+15 - date - 4 daytime fieldcast the value as date allow changing additions field lookup take a data value.
+
+  example : - 
+
+    student.objects.filter(admdatetime__date=date(2020 , 6 ,5))
+    student.objects.filter(admdatetime__date__gt=date(2020 , 6 ,5)) also greater than 
+
+
+16 - year - For date and daytime field an exact year match allow changing addition field lookup takes an integer year.
+
+  example : - 
+
+   student.objects.filter(passdate__year=2020)
+   student.objects.filter(passdate__year__gt=2020)
+
+17 - month - Four daytime field and exec month match allow changing additional fields look up take an integer 1(january) through 12(december)
+
+
+18 - day - for date and daytime field and exact day match allow changing additional field lookup take an integer day:
+
+  example : - 
+
+  student.objects.filter(passdate__day=5)
+  student.objects.filter(passdate__day__gt=5)
+
+  this will match any record with a pub _data on that 3rd day of the month such as January 3 July 3 etc. 
+
+
+  19 - week - For date and daytime field return the week(1-52 or 53) According to ISO - 860 IIEV start on a Monday and the first week contain the first first Thursday.
+
+  example: - 
+
+    student.objects.filter(passdate__week=23)
+    student.objects.filter(passdate__week__gt=23)
+
+
+20 - week_day - Four date and daytime field a day of abuse match allow changing additional fee in lookups take an integer value representing that day of week from 1th Saturday to 7th Saturday.
+
+example: -
+
+  student.objects.filter(pass_date__week_day=6)
+  student.objects.filter(pass_date__week_day__gt=6)
+
+21 - quater 
+
+22 - time 
+
+23 - hour 
+
+24 - minitus 
+
+25 - second 
+
+26 - isnull ceck fiedl id null or not 
+
+------------------------------
+
+27 - regex 
+
+28 - iregex 
+
+
+
+
+
+
+
+
+
+
+
+ 

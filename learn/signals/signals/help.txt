@@ -1,0 +1,229 @@
+# in this chapter we learn about signals . 
+
+-  singles are utility that allow us to associate event with action .
+
+-signals allow 13 senders to notify a set of receivers that allow action has taken place.
+
+  * login and logout signals
+  * Model signals
+  * Management signals 
+  * Request /Response signals 
+  *test signals
+  * Database Wrapper . 
+  * custom signals . 
+
+
+descripbe signals . 
+
+ three main roll char . 
+
+ 1 = sender 
+ 2 = signal 
+ 3 = receiver 
+
+
+ functions : -- 
+
+
+
+   receiver Function = This one son takes a sender argument along with wildcard keyword argument (**kwargs)   all signals handle must take these arguments a receiver can be any python function or method.
+
+   example : - 
+
+      def_reciver_func(sender , user , **kwargs):
+          pass 
+
+
+     Connecting/REgistering Function - there are two way you can conect a reciver to a signals . 
+
+     1 = Mannual Connect Route 
+     @ = decorator 
+
+
+how to DO : - 
+
+
+  Mannual connecter Route - Receive a signal register or receiver function using the Signal.connect() method Darcy function is called when the signal is sentall of the signals receiver functions are called one at a time in the order they were registered . 
+
+  Signal.connect(reciver_func , sender=None , weak=True , dispatch_uid=None)
+
+  where , 
+
+   reciver_func - the callback function which will be connected to signal . 
+
+   sender = Specifies a paticular sender to reciver signal from . 
+
+   weak = django stores signal handlers as weak reference by default does if you receiver is a local function it may be garbage collected to preventthis past week equal to false when you can the signals connect() method . 
+
+   dispatch_uid - a unique identifier for a single receiver in case where duplicate signal may be sent 
+
+
+
+   connect signal via decoratores : - 
+
+    Deorator - @receiver(signal or list of signal , sender )
+
+
+
+Built in signals in django ==== 
+
+
+ how signals work and whre it can use : - 
+
+  jangboo provide a set of built - in singles that let code  get notified by Jango itself of certain actions .
+
+  login in an dlogout signals : - the art framework used the following signals that can be used for notification when a user logs in or out. 
+
+     note -  ssame thing you can do with other method but you have to write so many logic . thay\t ehy we learn signals framework . 
+
+    import = django.comntrib.auth.signals 
+
+      1 = user_logged_in(sender , request , user ) - sent when a user logs in succefully . 
+   
+      2 = sender = the class of the user that just logged in . 
+
+      3 = request - the current HttpResponse instance . 
+
+      user = the user instance that just logged in . 
+
+
+ user_looged_out(sender , request , user) - Send well the love method is called.
+
+  sender - the class of the user that just logged out or None if the user was not authenticated . 
+
+  request - the current HtttpResponse . 
+
+  user - the user instance that just logged out or none if the user was not authenticated . 
+
+
+
+user_looged_failed(sender , credientials , request) - send when the user failed to log in successfully.
+sender - the name of the model used for authentication 
+
+cresitials - Dictionary of keyword argument containing the user credential that were passed to authenticate() are your own custom authentication backend credentials matching a set of sensitive patterns (including password) will not be sent in the clear as part of the signals.
+
+request - the HttpResponse object if one was provide to authenticate(). 
+
+
+
+we have work in three file , app.py init.py and new signals . 
+
+some example of using signals . 
+
+
+like ip adress  show where which device user can login . 
+
+how many time user login . 
+
+or intro of you site 
+or nymer tme user can try to login than user is block and many more. 
+
+
+
+model.signals ========== A set of signals sent by model system.
+
+django.db.nodels.signals import pre_init , pre_save , pre_delete , post_init , post_save , post_delete . 
+
+1 ====
+
+Pre _init(sender , args , kwargs ) - whenever you instance a django model this signal is sent at the beginning of the models  -init -() methods . 
+
+sender - the models class that just had instance created .
+
+args = A list of positional argument passed to __init __().
+
+kwargs =  Addictionary of keyword argument past two __init _()
+
+
+
+2=====
+
+
+post_init(sender , instance)-like pre_init, but this one is sent when the ___init__() methods finish . 
+
+sender - the odels class that just had an instance created . 
+
+instance - the actual instanxce of the models that 's just been create . 
+
+
+herte we can do when data is update old cache remove and set new cache . 
+
+3 =======
+
+
+pre_save(sender , raw , using , update_fields) -This is sent at the beginning of the model save() methodd.
+
+sender - the model class 
+
+raw - a bullion true if the model is saved exactly as presented IE (when looting a fixture ) one should not query/ modify other records in the database the database might not be a consistent state yet. 
+using - the database alias beigng used 
+
+update_field  - the set of yields to update as pass to model.save() .or None if update_fields was't passed to save() 
+like three _safe but sand at the end of the seed() methods . 
+
+post_save(sender , instance , created raw , using . update_field ) - like pre _save but sent at the end of the save() methpds . 
+created - a boolean  do if our new record was created. 
+
+raw , same as previous , 
+
+update_field same as upper . 
+
+raw also save 
+
+
+
+
+
+
+
+4 ====== 
+
+post_save(sender , instance , created , raw , using , update_field) - 
+ 3 =========== 
+
+ there is so many built in signal use it from chck from doc . 
+
+
+ 5 == 
+
+ pre_delete(sender , instance , using) - Delete method and a very set delete() method . 
+
+  seder - the model class . 
+
+  instance - the actual instance beign deleted 
+
+  using - the database aliase .
+
+  6 ====
+
+
+   Post_delete(sender , instance , using ) - like pre_delete but sent at the end of a model 's delete() method and a queryset'  s delete() methods . 
+
+   sender - the  model class 
+   instance - the actual instance beign deleted . 
+
+   note that the ovbject will no longer be in the database so be very carefull what you do with this instance . 
+
+   using - the database aliase 
+
+
+
+6===================== related to model relationship ============== using thst things . 
+
+m2m_changed(sender , action , reverse , model , pk_set, using ) - When many to many field is changed on a model instant strictly speaking this is not a model signal since it is sent by the many to many fields but since its complements the re _saves most _save and pre _leads last post _deletewhen it's come to tracking change to model it is include here 
+
+
+7 ===
+
+class_prepard (sender) - sent whenever a model class has been prepared - that is once model has been define and registered with Django syatem  Django uses the signals internally it 's not generally used in third-party applications . 
+
+
+since the signal is sent during the app registry population process and AppConfig.ready() Run after the aap registry is fully populated receiver cannot be connected in that method one possibility is to connect them app config dot __in it __() instead taking care not to import model or trigger call to the app registry 
+
+
+
+
+
+
+
+

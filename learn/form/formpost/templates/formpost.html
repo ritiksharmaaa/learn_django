@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> this is form made with post method </h1>
+    <div>
+
+        <div>  Tango provides csrf protection with csrf _token which we need to add insidefontag this token will add a hidden input field with random value in fog tag </div>
+
+        
+        <form action="" method='post' novalidate  >
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <button  style='background-color : blue ; color : white ;' type="submit" value='submit'> submit </button>
+
+        </form>
+     
+
+    </div>
+</body>
+</html>

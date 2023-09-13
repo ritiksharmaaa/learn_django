@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Song  data </h1>
+
+    
+    <style>
+
+        table , th , tr  ,td {
+            border : 2px solid black ;
+        }
+    </style>
+    <h1> user data ! </h1>
+    <h3> data 1 </h3>
+    <table>
+        <th> song name  </th>
+        <th> song duration </th>
+        <th> user  </th>
+        
+        
+        {% for dt  in date1  %}
+
+        
+        <tr>
+            <td> {{dt.song_name}}</td>
+            <td> {{dt.song_duration}}</td>
+            <td> {{dt.user}}</td>
+        
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+
+
+    <h3> data 2  data filter by post publish date   </h3>
+    <table>
+        <th> song name </th>
+        <th> song duration </th>
+        <th> user </th>
+           
+        {% for dt  in date2  %}
+
+        
+        <tr>
+          
+            <td> {{dt.song_name}}</td>
+            <td> {{dt.song_duration}}</td>
+        
+            <td> {{dt.user}}</td>
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+    
+    <h3> data 3   post filter by user username   </h3>
+    <table>
+        <th> song name </th>
+        <th> song duration </th>
+        <th> user  </th>
+
+        
+        {% for dt  in date3  %}
+
+        
+        <tr>
+          
+            <td> {{dt.song_name}}</td>
+            <td> {{dt.song_duration}}</td>
+    
+            <td> {{dt.user}}</td>
+
+        </tr>
+            
+        {% endfor %}
+            
+    </table>
+
+    
+</body>
+</html>

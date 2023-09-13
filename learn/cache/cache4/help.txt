@@ -1,0 +1,75 @@
+# low - level -cache api . 
+
+sometime caching an entire rendered page does not gain very much and is in fact inconvenient overkill . 
+
+One have four instance your site include a view whose result depend on several expensive queries the result of which change at different interval in the case it would not be ideal to use the full page caching that the upper side of caching strategy offersbecause you would not want to catch the entire result since some of the data change often but you did still want to catch the result that rarely changed. 
+
+in this chapter we see hoe to cahec that paticular part which does' change very frequently so we cache api  .
+
+Best Django exposes a low level cache api you can use the api to store object in the cache with any level of granularity you like you can cash any python object that can be pickled safely string dictionarylist of models object and so forth.
+
+we have to use this
+
+ django.core.cache.cache 
+
+1 =  cache.set(key , value , timeout=Default_timeout , version = NOne) this method is used to set cache . 
+
+ where - it shoud be str .
+
+  value = it can be any pickeable python objects . 
+
+  timeout = no of time cache need . 
+
+  version = it is an int you can set cache with same key but different version .
+
+  2 = cache.get(key , default=None , version=None ) - Object this method is used to get cashif the key does not exist in the cache it retur where
+
+
+  default = This is part which value to return if the object does not exist in the cache.
+
+
+  3 = cache.add(key , value , timeout=DEFAULT_TIMEOUT , version=None)  = This method is used to add a key or knee if it does not already exist its take the same parameter as set but it will not attempt to update the cache if the key is specified is already present if you need to know whether ad stored a value in cache you can check the return valueit will return true if the value was stored false otherwise. 
+
+
+   4 = cache.get_or_set(key , timeout=DEFAULT_TIMEOUT , version= NOne ) = This method is used to get a key value or a set of value if the key is not in the cache its take the same parameter as cat but the default is sacked as the new cache value for that key rather than return you can also passany callable hazard default value. 
+
+5 = cache.set_many(dict , timeout) = this method is used to set multiple value more efficiently use set _many to pass a dictionary of key - value pair. 
+
+cache.get_many(keys , version=None ) -  There's also a gate _many() interfaced at only hits the Kashi once get _many() return dictionary with all the key you asked for that actual exist in the case and have not expired.
+
+cache.delet(key , version=None ) = This method is used to delete key explicitly to clear dash the cashier for a particular Object
+
+cache_delete_many(keys , version= NOne ) - this method is used to clear a bunch of key at once it can take a list of key to be cleared.
+
+cache_clear() -  This method is used to delete all the key in the case a G careful with this clear() Will remove everything from the cache not just keys set by your application. 
+
+
+cache.touch(key , timeout+DEFAULT_TIMEOUT , version=NOne) - this method is used to set a new expiration for a key.touch() return true if the key was successfully touched falls otherwise 
+
+cache.incr(key , delta=1 , version=NOne)
+cache.decr(key , delta=1 , version=NOne)
+
+cache.close() - you can you can close the connection to your cache A with close() is implemented by the cache Back end . 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

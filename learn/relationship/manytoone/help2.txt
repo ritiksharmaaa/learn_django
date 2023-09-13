@@ -1,0 +1,48 @@
+# many to many fields 
+
+when one row of table a can be linked to one or more row of table B and vice versa
+
+realword example 
+
+a book is wrten by multiple authore or multiple authore write one book . 
+
+techinacl example - 
+
+a user table and a song table .----------
+
+--------------------------------------when we make many to may relatioship -----------
+
+we create three table : - first one user second song , and who made relation is third table .
+
+Many to Many relationship - Define a many to many relationships use many to many field you use it just like any other fuel type by including it as a class attribute of your model.
+
+Many to many fields require a positional argument the class to which the model is relate.
+
+syntax : - 
+
+ ManyToManyfields(to , **options)
+
+ where ,
+
+ to - The glass to which the model is related
+
+ related_name = The name to use for the relations from related object back to this one it also the default value for related _query _namethe name to use for the reverse filter name from the target model.
+
+ If you did prefer Django not to create a record related sat related Anushka name 2 plus or and it with plus. "+" hthis plus 
+
+ related _query _name the name to use four reverse filter name from the target model it default to the value or related _name or default _related _name if sat otherwise it default to the name of the model.
+
+
+
+ ----------------------------example -----------------------
+
+ class User(models.Model):
+     user_name = fields 
+     password = fields 
+
+class Song(models.Model):
+    user = models.ManyToManyField(User)
+    song_name = field 
+    song_duration = field 
+
+     ----------working with same models . 

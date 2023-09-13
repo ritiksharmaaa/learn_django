@@ -1,0 +1,49 @@
+mant to one realtionship 
+
+-----
+
+When one or more row of table B can be linked to one row of table a.
+
+in real words a father and his threee child . make a realtion many to one - many is children and father one .
+
+in techincal words --- 
+
+ user - one - but one user post multiple post -- this is make like a manytooneworlds . 
+
+
+ same as manyone related to many ones --
+
+ ----------------------------------------------------------------------
+
+ ManyToOne realtionship - To define a many - 2one relationship use foreign key you use it just like any other field type buy included it a class attribute of your model.
+
+ A many - two - were relationship required two position argument the class to which the model is related and the on _delete option.
+
+   syntax - ForeignKey(to , on_delete , **kwargs )
+
+   to - The class to which the model is relate .
+
+   on_delete - When an object reference by a foreign key is deleted Djangoville emulate the behavior of Sql Constraint specify by the on _delete argument on _delete does not create sequel constraint in the database.
+
+
+
+
+   ----------------and all date which we learn in onetone fields ----------------------------------
+
+
+   example : - \
+
+   
+
+   class USer (models.Model): 
+       user_name = fields 
+       passwords = fields 
+
+   class Post(models.Model):
+       user = models.ForeignKey(User , on_delete=models.CASCADE )
+       post_title = fiedls 
+       post_cat = fields 
+       post_publish_date  = datefields 
+
+       
+

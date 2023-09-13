@@ -1,0 +1,49 @@
+In this chappter we are learning template fragment cache .
+
+# per site cache = mean cache whole set at one time . 
+
+# per views cache = Granular way to use the caching framework is by catching the output of individual views 
+
+# Template fragment caching - this give you more control what to cache .
+
+-------------------------------------
+
+this give you more control what  to cache .
+
+{% load cache%} - this gives access to cache tag in templates . 
+
+use cache tag to cache some content .
+
+{% cache %} - the templates tags caches the content of the block for a given amount of time .
+
+{% cache timeout name variable using=""%} -- {% endcache name %}
+
+Timeout = the caches timeout in secound the fragment is cached forever if timeout is now . it can be a templates variable . as long as templatess variable resolve to an integer value . 
+
+Name = The name to give the cash a fragment the name will be taken as it do not use a variable.
+
+
+
+Variable = this can be variable with or without filter this will cash multiple copy of fragment depending on some dynamic data that appear inside the fragment
+
+using = the cash tag will try to use the given cache if no such cache exists it will fall back to using the default cache you may select an alternative cache back end to use with the using keyword argument which must be the last argument to the tag.
+
+exxample == 
+
+
+   {% load cache %}
+   {% cache 60 sidebar request.user.username using="localcache" %}
+   ...sidebar for looged in user 
+   {% endcache %}
+
+   and all the data use juct we use in psv same setting 
+
+   CACHES = {
+      FOR DATA BASE GIVE DB WALA , ELSE FILE WALE , OR ELSE LOCASL WALE SETTIGNUSE 
+   }
+
+
+   when we implent template fragment we don t need to do cahnge in middleware not any thing adding in this file .
+
+
+   saME YOU CAN DO WITH FILE BASED .  

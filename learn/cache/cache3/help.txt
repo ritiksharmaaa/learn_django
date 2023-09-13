@@ -1,0 +1,67 @@
+per views cache 
+
+learning pattern firt cache  than cache 3 cache1 than cahe 4 
+
+the per view - amore  granular way to use the caching framework is by cashing the output of individual views django .views.decorators.cache define a cache _page decorator that will automatically cache the viewsresponse if multiple urls point at the same view each url will be cache separately. 
+
+suppose you make a dynamic url at that time each dynamic url have caheche seperately . 
+
+use == 
+
+
+ import in views  py file . 
+
+
+   from django.views.decorators.cache import cache_page 
+
+   and the view you ant to cahe 
+   put this decorate just upper the view function 
+
+
+   @cache_page(timeout , cache , key_prefix)
+   def my_views(request)
+
+
+   timeout = the cache timeout , in seconds . 
+   cache = The direct the decorator to use a specific cache from your CACHES settings when caching viewing result by default the default cache will be used.
+   key_prefix = You can also overwrite the cashier prefix on Akbar - View basis if works in the same way as the CACHE _MIDDLEWARE _KEY _PREFIX settings for the middleware. 
+
+
+
+example ====
+
+@cache_page(60 , cache=""some_cahe' , key_prefix="some_key)
+def home(request )
+
+
+
+another methos we can also do per views cachew in urls py file . 
+
+
+ let chek how can we do  --- 
+
+
+ same imprt from vies.decorate 
+
+ urlpasttersn= [
+    path('/' , cache_page(timeout , cache , key_prefix )( views_function)),
+
+
+
+ ]
+
+ you canuse any of them but matter where it can rightfully use of this things . 
+   
+
+exapmle : - 
+
+path , cache_page(60) (views.home )
+
+
+AND ALL THE SETTING ARE SAME WHAT IS USED FOR DB . LOCAL , FILEBASED . 
+
+the diffrence between this cahce method ,
+
+one can give you direct output not from cache . 
+one type is give output after cahcing first than give output from cache . 
+

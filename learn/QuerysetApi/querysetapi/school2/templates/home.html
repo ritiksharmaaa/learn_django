@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        table{
+            margin-left : 25% ;
+        }
+        .mid{
+            margin-left : 38% ;
+        }
+
+        .bd {
+            border: 2px solid black ;
+            padding : 12px ;
+        }
+    </style>
+
+    <h1> querysetapi that not return new queryset ! </h1>
+    <h3 class="mid">Student Information  </h3>
+    <table>
+<tbody>
+    <tr>
+
+        <th class="bd">id</th>
+        <th class="bd">Name</th>
+        
+        <th class="bd">Roll</th>
+        <th class="bd">City</th>
+        <th class="bd">Marks</th>
+        <th class="bd">Passing Year </th>
+        
+
+    </tr>
+
+    <tr>
+        <td class="bd">{{student.id}}</td>
+        <td class="bd">{{student.name}}</td>
+        <td class="bd">{{student.roll}}</td>
+        <td class="bd">{{student.city}}</td>
+        <td class="bd">{{student.marks}}</td>
+        <td class="bd">{{student.pass_date}}</td>
+
+    </tr>
+
+
+
+
+</tbody>
+               
+        
+        
+        
+    </table>
+        
+</body>
+</html>

@@ -1,0 +1,15 @@
+the file -based backend siligura R store in Casey's value as a separate fine
+
+CACHES = {
+    'default':{
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION' : 'D:/programing/django/learn/cache/file_based_cache'  ,
+  }
+
+  }
+
+  make sure the directory pointed - to buy this setting exist and is readable and writable by the system user under which your web server run .
+
+
+
+By default this is local memory cachingif you arwe not define anythings . 

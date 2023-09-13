@@ -1,0 +1,119 @@
+# Middleware hooks. 
+Following are a special method to class - based middleware  it not work in function based middleware . 
+
+1 ==
+
+
+process_view(request , view_func, view_args , view_kwargs) - Pause C J it is called just before Django called the view.
+
+it should return wither None or an HttpResponse object. 
+
+if it returns none jango will continue processing the request executing any other process _() And then the appropriate views. 
+
+ if its return an http response object Django would not bother calling the appropriate views it will apply response middleware to the stt response and return result. 
+
+ parameter : - 
+
+   views_func - it is a python function that Jengo is about to use it the actual function object not the name of the function as a string.
+
+   views_args - It is a list of positional arguments that will be passed to the view.
+              
+   view_kwargs -      it's dictionary of keyword argument that will be passed to the view.
+
+   neither view_args not view_kwargs include the first views argument (request).
+
+
+
+2 === 
+
+process_exception(request, exception) - django call process _exception(). When you raise an exception 
+
+it should Return None and HttpResponse object . 
+
+if its return an hTTP response object the template response and response middleware will be applied and the resulting response return to the browser otherwise default access handling kick in. 
+
+request - it Is an http response object
+
+excwption - it is an exception object raised by the viewfunction 
+
+Note - middleware or run in reverse order during the response phase which include process _exceptions if an exception middleware return or response the process _exceptions method of  classes above the middleware wont not be called at all.
+
+
+
+3 -== 
+
+process_templates_response (request , response) - this method is called just after the view has finished executing if the response instance has a render() If method indicating that it is a TemplateResponse or equivalent.
+
+It returns must response object that implement in render methods . 
+
+it could alter the given response by changing response by changing response. template_name and response and response.context_data , or it could create and return a brand-new TemplateResponse or equivalent . 
+
+you don't need to explicitly render response response will be automatically rendered once all template response middleware has been called. 
+
+   request - It is an HTTP response object
+   response - iit is the TemplateResponse object (or equivalent) returned by a django views or by a middleware . 
+
+   
+
+Note - 
+
+  middleware or run in reverse order during the response phase include process_template _response()
+
+
+
+  ------------------ Template Response __________________________________
+
+
+  TemplatesResponse - TemplateResponse is a subclass o SimpleTemplateResponse that knoes about the current HttpRequest . 
+
+  a template response object can be used anywhere that a normal jangle.http.sttp responds can be used it can also be used as an alternative to calling render(). 
+
+
+
+  ---------------Methods ------------------------------ 
+
+  __init__(request , template , context=None , content_type=None , status=None , charset=None , using=None) 
+
+  - It instantiate a template response object with a given template contacts content type STTP status and char set.
+
+  where -- 
+
+    request - an Http Response instance .
+
+    template - a backend-dependent  template objects such as those written by get_template() The name of template or a list of template names.
+
+    context - her pic of value to add to the template context dot by default this is an empty dictionary
+      content_type - the value included in the STTP content - type header including the MIME types specification and the character set in coding if content _type is specified then its value is used otherwise text /  html is used . 
+
+    status - the HTTP status code for the response . 
+
+    charset - discharge set in which the response will be encoded if not given it will be extract from content _type and if that is unsuccessful the DEFAULT _CHARACT setting will be used. 
+
+    using -  the  NAME  of a templateengine to use for loading the template. 
+
+
+
+-----------
+
+there are three circumstances under which a templateresponse will be rendered . 
+
+1 = When the template response instance is explicitly rendered using the simple template response.render() methods 
+
+2 = 
+
+When the content of the response is explicitly set by assigning response.content 
+
+After After passing through template response middleware but before passing through response middleware.
+
+
+
+note -- 
+
+ A template response can only be rendered once
+
+ ----- 
+
+ let do practicles . 
+
+
+

@@ -1,0 +1,22 @@
+# related_name , parameter in django ---
+
+----
+
+in this we can maerge all concept and make a small project .
+
+------------- how to query in relationship to access date in templates ----------
+
+please watch views hoe to do querry ---------
+
+
+relatd name ---------------
+
+when we filter date using other models when we are in relationship so 
+
+we have to type class name and look up to paticular fiedl 
+
+example page__page_cat='somethinf -  '
+
+
+but we dont want to type the class name than we use related name 
+

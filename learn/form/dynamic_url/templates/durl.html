@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style> 
+        .head{
+            border : 2px solid black ;
+            margin-left : 520px ;
+            width : 25% ;
+            padding : 24px ;
+        }
+        .center{
+            margin-left : 234px ;
+            width : 70% ;
+        
+        }
+        .p-center{
+            padding : 34px ;
+            margin-left : 24px ;
+            border : 2px solid black ;
+            width : 88% ;
+            margin-top : 15px ;
+            border-radius : 6px ;
+        }
+
+        .button{
+            margin-left : 34px ;
+            padding : 10px ;
+            background : blue ;
+            text-decoration : none ;
+            border : 2px solid  black ;
+            color : white ;
+            border-radius : 6px ;
+
+        }
+        .button:hover{
+            background : black ;
+        }
+        
+    </style>
+    <h1 class="head"> Dynamic url Pages </h1>
+    <div class="center">
+        
+        {% for item  in data   %}
+        <p class="p-center"> {{item.name}} - {{item.email}} - {{item.password}} <a href="/dynamic/bolg/{{item.name}}/"" class="button"> see -{{item.name}}-Blog</a></p>
+            
+        {% endfor %}
+            
+    </div>
+    
+</body>
+</html>

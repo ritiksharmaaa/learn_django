@@ -1,0 +1,29 @@
+# class based middlewared : -- 
+
+class MyMiddleware:
+    def __init__(self , get_response):
+        self.get_response= get_response
+        # one time initialization 
+    def __call__(self , request):
+        #code to be excuted for each request before the views (and later middleware) are called 
+        response = self.get_response(request)  # there is get_response(request send to another middlware if not want not write this . )
+        # code to be excuted for each request/response after the views is called .
+        return response 
+
+
+
+let learn about some code knowledge . 
+
+__init__(get_response) = Biddleware factory mast asset gate _response argument you can also initialize some global state for the middleware keep in mind a couple of cavaeats. 
+
+Django initializes your middleware with only the get _response arguments so you cant define __init __() as requiring any other argument . 
+
+Unlike the __call __() method which is called once per request __innate __() Ace calls once only when the Web Server starts 
+
+
+
+Activate middleware ----- 
+
+ to activate middleware component and yet to the middleware list in your jungle setting. 
+
+ same as function middleware . 

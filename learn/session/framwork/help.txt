@@ -1,0 +1,192 @@
+# session framwork .
+
+the session Framework let you store and retrieve arbitrary data on upper side visitor basis
+it stored data on the server side and abstract the sending and receiving of Cookie cookie container session id not the data itself.
+By default jango stole session in your database as it stood session in database it is my
+as it is stored session in database so it is mandatory to run make migration and migrate to use session it will create required table.
+These two things present in your Django settings file
+ Django session framework is entirely and solely cookie - based
+ django.com trip session.middleware.SessionMiddleware
+
+ how to store session in data base . 
+
+  database backend sessions if you want to use a database backend session you need to add Django .contriv.sessions to your INSTALLED _APPS setting
+
+Once you have configured your installation run manage py migrate to install the install the single database table that stores session database
+
+
+cookie based sessions . 
+
+to use cookie - based session set up SESSION _ENGINE setting to Django.country.sessions.package.signed _cookiesthe season the session data will be stored using jango tools for cryptography signing and the  SECRET _KEY setting .
+
+
+cached sessions- 4 better performance you may want to use ACACHE - based session packet to store session data using Django cache systemyou will first need to make sure UV configured your cache.
+
+
+
+Using sessions in views -- 
+
+
+then SessionMiddleware is activated each Httprequest object the first argument to any Django View Function will have a session attribute which is dictionary - like object
+
+
+you can read it and write to request dot session at any point in your view you can edit it multiple times.
+
+
+setitem ---- 
+
+  returnval = request.session['key'] or using get method also gave default  .
+
+  cointains---
+    
+     key in request.session  
+
+
+
+
+session methods 
+
+  keys() - teturn all key in session 
+  items() - return all value 
+  setdefault('name' , '26') - return val of key . incase not set this cookiews in dict.
+  flush() - It deleted the current session data from the session and delete the session cookie this is huge if you wanted to ensure that the previous data can be accessed again from the user's browser for example the Django dot contrap dot auth dot logout() function  call it'ss
+
+get_session_cookie_age() - It returned the age of session cookie in second default to SESSION _COOKIE get_session_cookie_age
+
+set_expire () - It said the experience time for the session you can pass a number of different.
+
+If value is an integer the session will expire after the many second of inactive for example calling request dot session dot set _expiry 300 would make the sense expire in five minutes
+
+
+if value is date time or time delta object the session will expire at that specific datetime note that daytime and time delta value are only serializer  liable if you are using the pickle serializer
+
+If Value is zero the user session cookie will expire when the user web browser is closed.
+
+if value is none the second reward to using the global session expiry policy
+
+Reading a session is not considered activity for experience purpose session expire is computed from the last time the session was modified
+
+
+get_expire_age() =  it return the number of second until the session expire . for sessions with no custom_expiration ( or those set expire to browser close) this will equal SESSION_COOKIE_AGE .
+
+Function accept two optional arguments
+
+modification last modification of the session as a date time object default to the current times
+
+expire : Expire information for sessions as a daytime object and in seconds or none default to the value stored in the session by set _expiry if there is one of or none.
+
+get_expire_date() = It returned the date this session will expire for session with no custom expiration or those set to expire at browser close this will equal the date SEsSION_COOKIE _AGE seconds from now.
+
+these function attach the same keyword argument as get _expiry _age().
+
+get_expire_at_browser_close() - It's returned at a true or false depending on whether the user session cookie will expire when the user web browser is closed.
+
+clear_expired() = it removes expires sessions from the session store this class method is called by clearsessions
+
+
+
+#session method =========
+
+set_text_cookie() = It set a test cookie to determine whether the user browser support cookie due to the way cookie work you were not able to test this until the user next page requests.
+
+test_cookie_worked() = It returned as a true or false depending on whether the user browser accepted the test cookie due to way cookie work you will have to call set _test() cookion a previous separate page requestt
+
+delete_test_cookie() = it deletes the test cookie use this to clean up after yourself 
+
+
+
+
+
+
+
+
+
+
+Session settings +++++++++++++++++++++++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+SESSION _CACHE _ALIAS - if you are using cash base session storage please select the cash to use default:' default'
+
+S E S S I O N _C O O K I E _a G E - the age of session cookie in seconds default:'default' 1209600 2 weak in seconds .
+
+SESSION _COOKIE _DOMAIN - the domain to use for session cookie set these two are strings such as example dot com 4 Cross - Domain Cookies or use none for a standard domain cookie. 
+
+The cautions when completing the set these settings on a production site if you update the setting to enable cross domain key on a site that previously used standard domain cookie using user cookie will be set to the old domain this may result in them being unable to login as long as this cookie persist default : none 
+
+SESSION _CEOOKIE _HTTPONLY  http only of the U by default to set flag on session cookie upset http only if this is set to true the clients said Javascript will not be able to access the session cookie.
+
+HTTP only is a flag included in a set - cookie http response header it's part of Rfc 6265 standard for cookie and can be useful way to mitigate the risk of client - sites script accessing the protect cookie data.
+
+this make it less trival an attacker to escalate cross_site  scripting vulnerability into full hijacking of a user session too a truesession problem then there aren't many good reason for turning this off your code shouldn't read from javascript default as it is true 
+
+
+SESSION _COOKIE _NAME - the name of the cookie to use for session this can be whatever you want as long as it different from the other cookie name in your application defaultsession included
+
+SESSION _COOKIE _PATH these paths sat on the cookie these shoot other match the URL path of your installation or be parent of that paths
+
+this Believe you have multiple jango instance running under the same position they can use different cookie path and each instance will only see its own session cookie the default : '/'
+
+SESSIONCOOKIE - SAMESITE - the value of the same site flag on the session cookie these flags prevent the cookie from being sent in cross site request thus preventing csrfattack and making some method of stealing session cookie impossible
+
+popssible value for the setting are .
+
+strict = prevent the cookie foam being set by the browser to the target site in all cross - side browsing contests even when the following are regular link. 
+
+for example - 
+
+          for example for a Github like website this would mean that if a logged in user follow a link to a private Github Projectposted on a corporate discussion forum or Gmail Github will not receive the session cookie and the user were not able to access the project a bank website however most like doesn't want to allow any transaction page to be linked from external sites so the strict flagwould be appropriated.
+
+lax = default , Provide a balance between security and usability for website that wanted to maintain user login session after the user arrive from an external link in the getup scenario the session cookie would be allowed when the following are regular link from an external websiteand be blogged in csrf pron request method example post.
+
+none : desable the flag . 
+
+
+Swwsion_COOKIE_SECURE = whether to use a secure cookie for The session  Cookie if this is sad to true the cookie will be marked as secure which means browser may ensure that the cookie in the only set under httpsconnections.
+
+
+Leving with setting of is not good idea because an attacker could be captured and unencrypted session cookie with a packet  snifer  and use the cookie to hijack the user session default false. 
+
+
+SESSION_ENGINE - Control where Django stores shasen data include Indian ARE.
+
+  Django.com trip.sessions.backends.database
+  django.contrib.sessions.backends.file 
+  django.contrib.sessions.backends.cached 
+  django.contrib.sessions.backends.cached_db
+  django.contrib.sessions.backends.signed_cookies
+  django.contrib.sessions.backends.db 
+
+
+
+  SESSION_EXPIRE_AT_BROWSER_CLOSE -  Weather to aspire the session with the user closes the browser default equal to false
+
+  SESSION _FILE _PATH if you are using file - based session storage this set the directory in which Django will store session data when the default value none is used django will use the standard temporary directory for the systemdefault none . 
+
+
+  SESSION_SERIALIZER - FULL import path of a serializer class to use for serializing class to use for serializing session data . 
+  include searializer are :
+
+    Django.com trip.session.serializes.PickleS.erializer.
+    djanfo.contrib.session.searializers.JSONSerializer .
+    
+    Default : django.contrib.sessions.searializers.JSONSerializer.
+
+    
+
+
+
+
+
+
+
+
+

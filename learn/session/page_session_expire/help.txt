@@ -1,0 +1,3 @@
+#lit bit project we see how we can use session to make a more secure website like net banking .
+
+in net banking , if you open your account and if you do nothing in your account in more than 20 second , bank site automatically log_out and if you do something it can update next 20 sec again next 20 seccond . 

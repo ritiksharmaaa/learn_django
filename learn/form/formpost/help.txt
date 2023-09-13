@@ -1,0 +1,34 @@
+add another data . like getting form data , data validation , is_valid() , & cleaned data .
+
+
+ 1 . validat Data / fiedl validatation  , mean is_valid() functionse to validate fat by dajngo .
+ 2 .get cleaned data 
+
+
+clean data -- attribut == cleaned_data 
+
+ this attribute is used to access clean  data each field in a form class is responsible not only for validating data but also for cleaning it normalizingit to a consist format this is a nice feature because it's allowed data for a particular field to be input in a variety of way always resulting in consistent output once you created a form instant with a set of data and validating it you can access the clean data via its clean data _data.
+
+
+ Any text based field such as care field or email field always clean the input into a string
+  if you data does not validate the clean_data dictionary contain only the valid fields.
+
+  Clean _data will always only contain a key for defining form even if you pass extra data when you define the form 
+
+  When the form is valid cleaned _data will include a key and value of all its field even if the data did not include a value for  optional field
+
+
+In Django when we are submit the form without any giving the input its given and error messagethis message is Chengdu Validator also we have an html validator when we are not putting right text in email field it gives that you have to give at the rate and so many more validating things which is given by HTML5 
+
+
+
+So when we wanted to disable HTML5 validation we just we have to put form where the method written we have to write no validate without space so it can not showing the by default html Validation 
+
+
+If the app no do no validate in HTML 5we are submitting blank form to we have Django validation which is say this field is required and this message is R called error message 
+
+
+
+
+-------- httprespose redirect ------------
+

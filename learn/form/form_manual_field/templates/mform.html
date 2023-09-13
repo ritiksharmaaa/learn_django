@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>this is m from pages</h1>
+    <h3 style="color: red">
+      we are checking how we can set form field manaually
+    </h3>
+
+
+<div>
+
+    <label for="id_name"> Name :</label>
+    <input type="text " name="name " require id ="id_name">
+</div>
+    
+
+<div>
+
+    <label for="{{form.name.id_for_label }}"> Name :</label>
+    {{ form.name}}
+    {{ form.email}}
+</div>
+
+
+
+<div>
+{{ form.name.label_tag }}
+{{ form.name }}
+
+</div>
+
+<div> 
+{{ form.name.label }}fname
+
+<h5> field value </h5>
+{{ form.name.value}} <br>
+{{form.name.html_name}} 
+{{ form.name.help_text}} <br>
+<br> know about any field information <br>
+{{ form.name.field.required}}
+
+</div>
+
+<h4> if you have more than one field can you type this thing manuall no you have to run a loop </h4>
+
+<div>
+    
+</div>
+
+    {% comment %} <div>
+      <form action="" , method="get">
+        <table>
+          {{form}}
+        </table>
+      </form>
+    </div> {% endcomment %}
+
+
+  </body>
+</html>

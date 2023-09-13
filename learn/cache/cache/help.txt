@@ -1,0 +1,134 @@
+# cache 
+
+ A cache is an information technology for tempory storage (caching) of web document such as web page images and other and inputtypes of web multimedia to reduce server lag .
+
+caching is on of those methods which a  website implement to become faster it is cost efficient and save cpu processing time
+
+Django comes with robust cash system debts lets your save  dynamic pay so they dont have to be calculated for each request.
+
+not use caching in static site. becase it not good because static site easily rendered by normak machine . implement cahcing in dynamic sites .
+
+
+what you cache in django cache : - 
+
+
+you can catch the output of specific views you can catch only the piece that are difficult to produce or you can cache your entire site.
+
+following the option of caching : - 
+
+  database Caching 
+  file system caching 
+  local memory Caching 
+
+
+
+How cache work : - 
+
+ you request for paticular site . it load and set some data in your cache . so next time when you came and go same for that website . 
+ what website do it ask for you cahe that there response store or not . is store return from there . else genarate this page and set as cahe . so next time it works. 
+
+
+
+How to implement caching : - 
+
+you should have to setup cache in setting .py but recent we implement first sees setting after . 
+
+
+---------------------------------------------------------------------------------------------------
+
+ the per-site  cache - once the cache is set up the simplest way to use caching is to cache  your entire site.
+
+ the per views cache - a more granular way to use the caching framework is by caching the output of individual view. 
+
+ Template Fragment caching - this give you more control what to  cache
+
+
+there is three way of caching and also three place to store . 
+
+the per-site cache - onces the Once the Cassie is set up the simplest way to use caching it to cache your entire site'
+
+  set up setting py firl --
+
+     inside middleware .  patter in same no to mauch same . 
+
+     django.middleware.cache.UpdateCacheMiddleware two more middleware auto writed commonmiddleware -  'django.middleware.cache.FetchFromCacheMiddleware',
+
+     CACHE_MIDDLEWARE_ALIAS - the cache alisa to use for storage . 
+
+     CACHE_MIDDLEWARE_SECONDS - these numbers of second each page should be caCHE 
+     
+     CACHE_MIDDLEWARE_KEY_PREFIX - If the cash is shared across multiple side using the same jango installation set these to the name of the site or some other string that is unique to this jaego instant to prevent key collision use an empty string if you don't care. 
+
+
+
+
+
+DATABASE CCACHING : ----
+
+
+
+ Django can store at cash data in your database the work best if you we got a fast well indexed database server.
+
+ do this to setup 
+
+  CACHES={
+    'default':{
+        'BACKEND': 'django.core.cache.backends,db.DatabaseCache',
+        'LOCATION' : 'my_cache_table'  
+  }
+
+  }
+
+  Before using the database cache you must create the cache table with this command:
+
+    
+                 python manage.Py createcachetable
+
+
+if you are using multiple database caches create cache table create one table for each cache. 
+
+
+
+cache argument ----
+
+Each case back end can be given additionally argument to control cacshing behaviour. 
+
+TIMEOUT : the default time out in second to use for the cache the argument default to 300 seconds(5 minutes) you can set timeout to none so that by default cache key never expire a value ofzero causes key to immediately expire. 
+
+OPTIONS : Any option that should be passed to the cache back end the list of valid operations will vary with each beckons and the cash back by the third party library will pass their optional dial directly to the underlying catching library.
+
+cash backends that implement their own culing strategy IE the LOCMEM document file system and database backend will honor the following option.
+
+
+   MAX_ENTRIES : The maximum number of entry allow in the cashier before old value are deleted the arguments default to 300.
+
+   CULL_FREQUENCY: the fraction of entries that are curled when MAX _ENTRIES is reached the actual ratio is 1 / CULL _FREQUENCY source at CULL_FREQUENCY so set cull half the entry when MAX _entry is reached this argument should be an integer and default to 3.
+
+
+a value of 0 for CULL_FRECUENCY means That the entire Kashi will determine when MAX _ENTRIES is reached one some back ends database in particular this makes culling much faster at the expense of more cachetmisses .
+
+CACHES = {
+    'default' : 'django.core.cache.backends.db.DatabaseCache',
+    'LoCAtion' : enroll_cache',
+    'TIMEOUT' : 60 
+    'OPTION': {
+        'MAX_ENTRIES':1000 
+    }
+  'BACKEND'
+
+}
+
+
+
+how we can see each cache .
+
+first per-site-view with db.database or filebased .
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+# learning django templates language 
+
+dtl is simple templates language which Provide to rendering dynamic data in Html dtl is designed to strike a balance between power and ease it designed to feel comfortable to those used to working with Html
+
+we see : - 
+{{data}} : it provide to render dynamic data . in html 
+
+if you wanted to know about advance tempet language so in Jango there is a name of called jinja 2 this is also a modern design friendly template languaging for Pythonit fast widely used and secure with the optional sandbox template execution environment
+
+it not  provide by default if you need to using ginger too you have to installit and then use it in your django project .
+
+pip install jinja2 - then 
+in setting .py file 
+BACKEND : 'django.templatesbackend.jinja2.jinja2'.
+
+
+
+Variabele in html dtl---------------
+
+{{variable}} - when template engine encounter a variable . it evaluate that variable and replace it with rtesult .
+
+rule of defining variable -- it accept combination of alphanumeric char , underscore , 
+                          -- variable name not start with underscore , can not have space and punctuation characters . 
+
+
+
+
+adding jinja2 and dtl both in same project , 
+add this code where dtl have writen 
+
+{
+    
+        'BACKEND': 'django.template.backends.Jinja2.Jinja2',
+        'DIRS': [],
+        'APP_DIRS': True,
+     
+},
+
+
+
+
+FILTERS _____ inn dtl .
+
+
+When we need to modify variable before displaying we can use filters. Pipe '|' is used to applu filters 
+
+
+syntax {{ variable  | filter }}
+ {{name | upper }} - it convert value in upper case r = R ,
+
+some of the filter take argument .
+syntax - {{ variable | filter:argument}}
+
+ex - 
+
+{{ articles | truncateword : 40 }} - it only show 40 word of articles .
+
+
+we have atleast 50 filter 
+
+we can also put more than one filter in variable 
+ ex - 
+
+ {{articles | upper |trauncate:40}}
+
+
+
+filter names : - 
+
+capfirst - it convert each word first letter capital 
+default - if value is false it give default value to that varaibe ,  and if value is not pass also give default value ,
+length - give len of value , it work for list as well string , it return 0 for an  undefined . variable . 
+lower - convert value in lowercase .
+
+
+more you can see in templates html . or see websearch .
+
+date  time filtess -------------------
+
+{{value|date:'D :d: M: Y'}} - give date day month year  
+{{value|time:'H:i'}}
+
+fromate -- 
+d - for 2 digit of day of month with zero == 1 to 30 ,
+j - day of month without zero , 1 to 30
+D - day of week textual 3 letter = fri
+l - day of week , textual long friday ,
+S - english ordinal suffix for day of month 2 char , st , nd,rd or th 
+W - day of week digit without lending zeros = 0 sunday to 6 sunday 
+z day of the year  = 1 to 366 
+W - week number of year with starting on Monday , 1 , 53 
+
+months ------
+
+check on internet .
+
+
+
+
+
+
+

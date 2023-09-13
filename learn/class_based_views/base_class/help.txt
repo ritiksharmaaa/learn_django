@@ -1,0 +1,85 @@
+class based Views . 
+
+Base - view provide an alternative way to implement views as python objects instead of functions.
+They do not replace Function - based view.(if project demand for function based view you have to use it) .
+
+we have to type of class based views .: -
+
+  base class based views / base views.
+  generic class based views / generic views
+
+advantage :-
+
+organization of code related to specific as HTTP methods gad post etc can be addressed by the separate method instead of conditional branching.
+
+-------------------base class - based view -------------------------------
+
+
+base class based view can be thought of as a parent view which can be used by themselves or inherited from they may not provide all the capability required for projects in which case there are mixins which extends what base you can do.
+
+- view
+- TemplateView
+- RedirectView
+
+
+--------------view 
+
+django.views.generic.base.View 
+
+The master class based base view all other class based view inherit from this base class it is not strictly a generic view and thus can also be imported from Django.views 
+
+
+--------source code in django- view -generic - view 
+
+Attribute : - 
+
+ http_methods_names = ['get' , 'post' , 'put' , 'patch' , 'head' , 'option' , trace ]
+ this list of HTTP mehods names that this views will accept . 
+
+
+methods inside thos vase view class --
+-------------
+setup(self , request , *args , **kwargs): - it initialized view instant attribute: Self.requestself dot asks and self keyword arcsprior to dispatch()
+------------------
+dispatch(self , request , *args , **kwargs):- These view part of the view - the method that accept a request argument plus argument and return a http response.
+
+the default implementation will inspect the http method and attempt to delegate to a methodthat matches the http methods a get will be delegated to get() a POSt to post() and so on . 
+
+By default AHEAD request will be delegated to get method if you need to handle HEAD request in a different way than GET you can override the head method.
+--------------------
+http_methods_not_allowed(self , request , *args **kwargs ): - If the view was called with HTTP method it does not support this method is called instead.
+
+The default implementation return as TTP response not allowedwith a list of allowed method in plain text
+---------------------
+
+option(self ,request , *args **kwargs) : - it handles responding to requests for the OPTIONSTTPS verb return a response with the allow header containing a list of views allowed HTTP method names.
+
+-------------
+
+as_view(cls , **kwargs) -It return a callable view that takes a requestand return a response.
+-------------------------------
+_allowed_methods(self)
+
+
+
+diffrence in function or class based views : --------------------------
+
+
+normalfunction base view we can already see 
+
+--------let see class based view codew : - 
+
+ from django.views import view
+ 
+
+ class my_view(View):
+    def get(self , request):
+        return HttpResponse(' i am classed based views .')
+
+        ----------------------
+
+        how we can use urls in case of bse view
+
+first import from views '
+
+urlpatters = [path('func/'views.myview.as_view , name="name of view ")]

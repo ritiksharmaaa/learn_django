@@ -1,0 +1,61 @@
+we implmnt all thode decorator in function based authentication decoratoealso use there also 
+
+you can put login required in url aslo . 
+
+ex - 
+
+paht('/ ' , login_required(mytemplat.as_view(template_name="bolg/home.hrtml)) , name='dash' )
+path("/" , permission_required('blog.can_add))(blogPost.view.as_view() , name = 'blogpost')
+
+
+
+the upper methods this is not efficient . ---------------------------
+
+for learning anothe way you have to learn method_decorators . --------------------
+
+the method_decorator tranforma a function decorator so that it can be used on an instance methods . 
+
+a methods on a class isn not quite the same as a satandalone function so you can't just apply a function decorator to the methods you nedd to transform it into a method decorator . 
+
+
+syntax : - 
+
+
+@method_decorator(*args , **kwargs)
+
+now decorate class - based view 
+
+decorator in the class : - 
+
+   to a decorator ecery instance of a class based view ., you nedd to decorate the class defination itself , to do this you apply the decoratpr to the dispatch() methods of the class . 
+
+   implement : - 
+
+
+   from django.utils.decorators import methods_decorator 
+
+   from django.views.generic import TemplateView 
+
+   class ProfileVie(TemplateView):
+       template_name = 'registration/profile.html'
+
+
+       def dispatch(self , *args , **kwargs ):
+            return super().dispatch(*args , **kwargs)
+
+
+or alos do in upper of class like that 
+
+@method_decorator(login_required , name=dispatch)
+class views 
+
+
+another how implement multiple decorator normal way put all method one by one decorator than define class 
+
+
+new way 
+
+so make all decorator list or tuple 
+
+decorator = [never_cache , login_required , staff_login_required ] here order mathers 
+@method_decorator(decorator , name='dispatch')

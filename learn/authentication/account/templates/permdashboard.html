@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .btn{
+            text-decoration : none ;
+            background : blue ;
+            color : white ;
+            padding :10px ;
+            border-radius : 3px ;
+            margin-top : 23px ;
+        }
+    </style>
+    <h1> permission dashbord to delete somethings .</h1>
+   <h1>   User -    {{user}} </h1>
+   
+   {% if perms.account.delete_blog %}
+   <input type="button"  class="btn" value="delete">
+    
+   {% endif %}
+    
+    <a href="{% url 'logout' %}" class="btn"> logout  </a>
+</body>
+</html>

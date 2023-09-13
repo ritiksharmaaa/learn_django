@@ -1,0 +1,160 @@
+# cookies . 
+
+A cookie is a small piece of text data set by web server that reside on the client machine
+
+once it's been said the client automatically returned the cookie to the Web Server with each request that is make.
+
+These allow the server to place value it visits to remember in the cookie and have access to them when creating a response.
+
+how cookies work -------------
+
+the server who set cookiw to clien only they can read this data . 
+
+Let's take an example a client a venture hotel and ask for the receptionist I want room #45 and I take in a towel and I need specific the room number 4021and in food I am wanted to eat a paneer and that's it again next two or many day again heat it he come and ask same thing I need that thing that thing that I want food in that things so it is difficult to provide a past services to the client A because each time when the client is visiting the hotel hotel receipts always ask same thingand the person has some list which is they always ask so if they visiting daily daily same question asked by receptionist it feels are not getting a better services so best thing to giving the best services what the receptionist do receptionist make a note and write all the important thing which we need clientand put into their pocket so whenever the next time the client come what the receptor do its putting the notes from the client pocket and see what the client need and at at this time client does not say anything to what type of services I needso so this technique the hotel recept needs give a best services to client same as the inner programming server is on a hotel and a client is in a user so whenever visiting an site the server set some details in our computer so whenever we are going to the website these website get all the things from our client machine means our machine so it is very good as server as well as user because each time getting data from the server having taken some time so to reduce the time just like in an important data which he need very fastly just like your user name your wish list your card these type of things are not stored in the server it's stored in a client cookieand one of the important thing the server who put the cookie in a client server is only read by those server who set the key in the client server.
+
+
+let Let's talk about Django cookie .
+
+HttpRequest.COOKIES - a dictionary containing all the cookies keys and  value or string.
+
+Method in Jenga cookie: ----
+
+   set_cookie() - is used to set /create/sent cookies 
+
+   syntax - 
+              the http respone is get data fro render method and store in response is a httprequest.
+
+               HttpResponse.set_cookie(key , value="" ,  max_age=None , exire=None , path="/" , domain=None , secure=False , httponly=False , samesite=none)
+
+               key = name of the cookie .
+               value = this set the value of the cookie . this vaue is stored in a clinet server . 
+               name , value are require to set cookie . 
+
+               when you omit the optional cookie fields the browser fill them in automatically with reasonable default.
+
+
+
+cookie info rmaition 
+
+max_age = It should be a number of seconds or none default is the cookie should last one as long as the client trousers session if expire is not specific it will be calculated.
+
+
+   ex - 
+      
+      set_cookie("name" , "sonam" max_age=60*60*24*10) // 10 day 
+
+expire - It described the time when cookie will expire it should either be a string in the format Wdy , DD-mon-YY HH: MM:SS GMT Or a daytime dot daytime object in utc if expire is a date time object the max _age will be calculated.
+
+   ex - 
+
+     set_cookie(naem , val , expires=datetime.utcnow() + timedelta(day=2))
+
+path = path can be root / or / mydir(directories )
+
+  ex- 
+
+    set_cookie(key , val , "/") or /home 
+
+
+
+domain -  Use domain if you wanted to set a gross domain cookie for example domain equal to example com will set a cookie that is readable by the domain www .example.com, blog.example.com etc otherwise a cookie will only be readable by domain that set it. 
+
+  ex- 
+
+    set_cookie(key , val , domain = "geekyshow.com")
+
+    it work in sub domain also note.geekksows.com . code.geeksows.com 
+
+    or 
+
+     use this method only show in paticular domain 
+
+      set_cookie(key , val , "code.geekshow.com")
+
+
+secure - Cookies only be transmitted over secure protocols as HTTPS when set to true the cookie will only be set if a secure connection exists. 
+
+httponly - Use http only equal to two if you wanted to prevent client side javascript from having access to the cookieand
+
+  
+     HTTP only if a flag include in a set - cookie http response header its part of RFC 6265 standard four cookie and can be usefulway to mitigate the risk of client - side script accessing the protected cookie data. 
+
+     normal meaning . we false user necver get this cookie in go to our console and get all cokkie . 
+
+
+
+samesite  - Use same side equal district or same site equal to lax tell the browser not to send this key when performing a cross - origin request seemsight is not support by all browsers so it's not a replacement for Django csrf protection but rather a defense in depth measure
+
+RFC6265 state the user agent should support cookie of at least 4096 bytefor many browser this is also the maximum size django will not raise an exception if they are an attempt to store a cookie or more than 4096 byte but many browser will not set the cookie correctly.
+
+
+   ex - 
+
+      set_cookie(key, val , samesite=Strict)
+
+      drawback of dajngo cookie it not give exception if cookie are nto set properly . 
+
+
+
+
+
+
+
+
+how to reading and accesing this cookie which we are set in client machine . --------- --------------------
+
+
+HttpRequest.COOKIES - Dictionary containing all cookie key and value are string
+
+request.COOKIES['key'] or get (key , default ) or default=guest . 
+
+
+
+when we assigning a new value to cookie the current cookie are not replaced the new cookie is passed and is name value pair is append to the list these exception is when you assign a new cookie with the same nameand the same domain and a path if they exist as a cookie that already exists in this case the old value is replaced with the new 
+
+
+
+
+Delete the cookie -----
+These method is used to delete the cookie based on given key with same domain and path if they were set otherwise the cookie may not be deleted. 
+
+
+HttpResponse.delete_COOKIES( key , path , domain , )
+
+
+in django we have seesion framework so we dont need to learn but impo foe web devekop . 
+
+
+
+createing singned cookies 
+
+HttpResponse.set_signed_cookie(key , val , salt="" , max_age=None , expires=None ,path="/" , domain=None , secure , httponly=False , secure=False ,samesite=None  )
+
+
+it is similar to set_cookie(), but cryptographic signing in cookie before setting it. use in conjuction with HttpRequest.get_signed_cookie()
+
+
+how to get get_signed_cookie--------------------------
+
+HttpRequest.get_signed_cookie(key , default=Raise_ERROR ,salt=" , max_age=None)
+
+  it return a cookie value for a signed cookie, or raise a django.core.signing.BadSignature exception if the singnature is no longer valid. 
+
+  if you provide teh default argument the exception will be suppressed and that default value will be returned instead.
+
+  the optional salt argument can be used to provide extra protection againest brut force attackon your secret key . if supplied the max_age argument will be checked against the signed timestamp , attached , tp the cookie value to ensure the cookie is not older than max_age second .
+
+  
+
+
+
+
+    
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+# custom path conventer 
+ we have so many path is given by djano like :
+
+ str , int slug , uuid 
+
+ str = Matching any non empty string explode the part separate '\' as this is default if a converter is not included in the expression
+
+ int = match zero or any positive integer , return an int 
+
+ slug = match any slug string consting of ASCII letter or number . plus the hypen underscore character for example building your ist site 
+
+
+ uuid = match a formateted UUID to prevent URLS from mapping to the same-page , dashes  ,must be include and letter must to lowecase , for exampe - 0p7306897-3485687-328946e-;lakjf987h;klnhsdcohfoo 
+
+ path = matches any non-empty string , including the path seperator "/" this allow to match against . a complete urls path reather than a segment od an Url path as with str .
+
+
+
+
+ How t make a custom path converter .
+
+ 1 =  make a file name called pathconverter.py or simple converter.py 
+
+ inside file write this .
+
+
+inside list 0-9 says any number user 0 to 9  number in dyanamic urls 
+in indie curley braces tell no of digit you can put . ex year only need 4 digit value .
+
+
+why we need converter so this help the data came from urlbar is alway give string python have to convert the things but few . 
+if we want to convert as well in converter 
+
+ class FourDigitYearConveter:
+    regex = '[0-9]{4}'
+    def to_python(self , value):
+        return int(value)                        # this help to convert the value which came from url bar is only strin so we have to manaually convert those value .
+
+    def to_url(self , value ):
+        return '%04d'%value
+
+
+
+how to use this converter ===
+
+so before use we have to first register this conveerter in django 
+
+where to register , so register in urls .py file either it root leavel urls or project level urls.py 
+

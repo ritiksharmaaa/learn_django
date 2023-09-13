@@ -1,0 +1,48 @@
+cleaning and validating specific  form field  is make in another views function 
+
+clean <fieldname>() - this method is called on a form subclass where <fieldname> is replce with the name of the form field attribute .
+the method does any cleaning that is specific to that paticular 
+this fuction is not passed any parameter 
+
+
+We will need to look at the value of the field in self.cleaned _data and remember that it will be a python object at this point not the original string submitted in the form. 
+
+this help to make custom validator .
+
+
+
+
+#2 validate complete django form at onces in django 
+
+clean() methods on a field subclass is response for runnng to_python() , validate() and run_validators() in the correct and propagating their erroes . 
+
+If at any time any of the matters lead validation or validation stop and That Error is raised 
+
+These machines return the clean data which is then inserted into the cleaned _data dictionary of the firm 
+
+Implement a clean()  method on your form when you must add custom validation for field that are interdependent
+
+syntax  = data.clean()
+
+
+
+
+#3 built in validor and custom validator 
+all validator came from django.core modules 
+
+inside charfield - 
+import django.core validators 
+
+validators=[validators.Max_length(10)] this are built in validator how can we give custom 
+
+we make our own function 
+def start_with_s(value):
+   if value[0] != 's':
+      raise forms.validationError(""name should bes start with s 
+      
+      
+      
+and give them into 
+
+validator = [start_to_s]
+
