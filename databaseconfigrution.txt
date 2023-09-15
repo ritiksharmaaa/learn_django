@@ -16,7 +16,7 @@ DAtabase = {
 
 DAtabase = {
     default: 'django.db.backends.mysql'
-    'Name' :'databse name '
+    'NAME' :'databse name '
     'USER' : 'User_name'
     'PASSWORD': 'password'
     'HOST' : 'localhost',  # host an port are optionals 
